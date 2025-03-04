@@ -1,5 +1,5 @@
 
-import { Code, Flask, CloudCog, ShieldCheck, BarChart3, Shapes } from 'lucide-react';
+import { Code, Beaker, CloudCog, ShieldCheck, BarChart3, Shapes } from 'lucide-react';
 
 const PlatformFeature = ({ icon: Icon, title, description }) => {
   return (
@@ -21,7 +21,7 @@ const Platform = () => {
       description: 'Accelerate development with AI-generated code, reducing repetitive work and boosting productivity.'
     },
     {
-      icon: Flask,
+      icon: Beaker,
       title: 'Autonomous Testing',
       description: 'AI agents that learn testing patterns, building a reliable regression test suite automatically.'
     },
