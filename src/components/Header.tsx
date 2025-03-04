@@ -26,7 +26,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/72c67fe1-d55b-4cd8-8fce-84f332abd070.png" 
               alt="AgenticNex Logo" 
-              className="h-10 md:h-12" 
+              className="h-14 md:h-16 transition-transform duration-300 hover:scale-105" 
             />
           </a>
           
@@ -44,7 +44,7 @@ const Header = () => {
                 variant="ghost" 
                 size="icon"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="text-gray-700 dark:text-gray-300"
+                className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               >
                 {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               </Button>

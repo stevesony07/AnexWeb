@@ -46,6 +46,17 @@ export function ThemeProvider({
     }
 
     root.classList.add(theme);
+    
+    // Apply additional body classes for dark mode styling
+    const body = window.document.body;
+    if (theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      body.classList.add("dark-theme");
+      body.classList.remove("light-theme");
+    } else {
+      body.classList.add("light-theme");
+      body.classList.remove("dark-theme");
+    }
+    
   }, [theme]);
 
   const value = {

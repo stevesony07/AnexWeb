@@ -9,7 +9,6 @@ import CaseStudies from "@/components/CaseStudies";
 import Insights from "@/components/Insights";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 const Index = () => {
   useEffect(() => {
@@ -18,21 +17,19 @@ const Index = () => {
   }, []);
 
   return (
-    <ThemeProvider defaultTheme="light">
-      <div className="min-h-screen flex flex-col dark:bg-gray-900">
-        <Header />
-        <main className="flex-grow">
-          <Hero />
-          <Features />
-          <Services />
-          <Platform />
-          <CaseStudies />
-          <Insights />
-          <ContactForm />
-        </main>
-        <Footer />
-      </div>
-    </ThemeProvider>
+    <div className="min-h-screen flex flex-col dark:bg-gray-900">
+      <Header />
+      <main className="flex-grow">
+        <Hero />
+        <Features />
+        <Services />
+        <Platform />
+        <CaseStudies />
+        <Insights />
+        <ContactForm />
+      </main>
+      <Footer />
+    </div>
   );
 };
 
