@@ -42,16 +42,6 @@ export function ThemeProvider({
         : "light";
 
       root.classList.add(systemTheme);
-      
-      // Apply additional body classes for dark mode styling
-      const body = window.document.body;
-      if (systemTheme === "dark") {
-        body.classList.add("dark-theme");
-        body.classList.remove("light-theme");
-      } else {
-        body.classList.add("light-theme");
-        body.classList.remove("dark-theme");
-      }
       return;
     }
 
@@ -59,7 +49,7 @@ export function ThemeProvider({
     
     // Apply additional body classes for dark mode styling
     const body = window.document.body;
-    if (theme === "dark") {
+    if (theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
       body.classList.add("dark-theme");
       body.classList.remove("light-theme");
     } else {
