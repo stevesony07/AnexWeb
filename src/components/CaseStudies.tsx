@@ -3,22 +3,22 @@ import { ArrowRight } from 'lucide-react';
 
 const CaseStudyCard = ({ industry, title, metric, description, readMoreLink }) => {
   return (
-    <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 h-full card-hover">
+    <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 h-full transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg dark:shadow-blue-900/10">
       <div className="mb-4">
-        <span className="text-sm font-medium text-brand-blue bg-blue-50 px-3 py-1 rounded-full">
+        <span className="text-sm font-medium text-brand-blue dark:text-brand-lightBlue bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full">
           {industry}
         </span>
       </div>
-      <h3 className="text-xl font-semibold text-gray-900 mb-3">{title}</h3>
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{title}</h3>
       <div className="mb-3">
-        <span className="text-4xl font-bold text-brand-blue">{metric}</span>
+        <span className="text-4xl font-bold text-brand-blue dark:text-brand-lightBlue">{metric}</span>
       </div>
-      <p className="text-gray-600 mb-6">{description}</p>
+      <p className="text-gray-600 dark:text-gray-300 mb-6">{description}</p>
       <a 
         href={readMoreLink} 
-        className="inline-flex items-center text-brand-blue font-medium hover:underline"
+        className="inline-flex items-center text-brand-blue dark:text-brand-lightBlue font-medium hover:underline group"
       >
-        Read case study <ArrowRight className="ml-1 h-4 w-4" />
+        Read case study <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </a>
     </div>
   );
@@ -50,10 +50,10 @@ const CaseStudies = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 dark:bg-gray-900">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Success Stories
           </h2>
         </div>

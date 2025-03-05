@@ -43,30 +43,17 @@ export function ThemeProvider({
 
       root.classList.add(systemTheme);
       
-      // Apply additional body classes for dark mode styling
-      const body = window.document.body;
-      if (systemTheme === "dark") {
-        body.classList.add("dark-theme");
-        body.classList.remove("light-theme");
-      } else {
-        body.classList.add("light-theme");
-        body.classList.remove("dark-theme");
-      }
+      // Apply proper dark mode body classes
+      document.body.classList.toggle("dark-theme", systemTheme === "dark");
+      document.body.classList.toggle("light-theme", systemTheme === "light");
       return;
     }
 
     root.classList.add(theme);
     
-    // Apply additional body classes for dark mode styling
-    const body = window.document.body;
-    if (theme === "dark") {
-      body.classList.add("dark-theme");
-      body.classList.remove("light-theme");
-    } else {
-      body.classList.add("light-theme");
-      body.classList.remove("dark-theme");
-    }
-    
+    // Apply proper dark mode body classes
+    document.body.classList.toggle("dark-theme", theme === "dark");
+    document.body.classList.toggle("light-theme", theme === "light");
   }, [theme]);
 
   const value = {
