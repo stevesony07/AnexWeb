@@ -1,13 +1,14 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden dark:bg-gray-900 relative">
-      {/* Background gradient elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-br from-blue-200/30 to-purple-300/20 dark:from-blue-900/20 dark:to-purple-800/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-indigo-200/30 to-cyan-300/20 dark:from-indigo-900/20 dark:to-cyan-800/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+    <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden relative">
+      {/* Enhanced background gradients */}
+      <div className="absolute top-0 right-0 w-3/4 h-1/2 bg-gradient-to-br from-blue-300/40 to-purple-400/30 dark:from-blue-700/30 dark:to-purple-600/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-2/3 h-1/2 bg-gradient-to-tr from-indigo-300/40 to-cyan-400/30 dark:from-indigo-700/30 dark:to-cyan-600/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
 
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -39,10 +40,12 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <Button className="bg-gradient-to-r from-brand-blue to-brand-lightBlue hover:opacity-90 text-white px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-200/50 dark:hover:shadow-blue-900/30">
-                Explore Our Platform
-              </Button>
-              <Button variant="outline" className="border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 px-8 py-6 text-base transition-all duration-300 transform hover:scale-105">
+              <Link to="/platform">
+                <Button className="bg-gradient-to-r from-brand-blue to-brand-lightBlue hover:opacity-90 text-white px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-200/50 dark:hover:shadow-blue-900/30 w-full sm:w-auto">
+                  Explore Our Platform
+                </Button>
+              </Link>
+              <Button variant="outline" className="border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800 dark:text-gray-300 px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
                 Schedule a Demo
               </Button>
             </motion.div>
@@ -56,7 +59,7 @@ const Hero = () => {
           >
             <div className="rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-blue-200/50 dark:hover:shadow-blue-900/30">
               <img 
-                src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80" 
+                src="/lovable-uploads/cc511292-82d3-42da-af65-b707a8c33d40.png" 
                 alt="AI Technology" 
                 className="w-full h-auto rounded-xl"
               />

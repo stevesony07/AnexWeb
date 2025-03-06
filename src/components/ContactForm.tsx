@@ -26,11 +26,9 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate form submission with a delay
-      console.log("Form submitted:", formData);
-      
-      // In a real application, you would send this data to your backend or email service
-      // For example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
+      // EmailJS integration would go here
+      // This is a placeholder for the actual EmailJS code
+      console.log("Form submitted with EmailJS:", formData);
       
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
@@ -60,9 +58,12 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-800" id="contact">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800" id="contact">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16 animate-fade-in relative">
+          <div className="absolute inset-0 flex items-center justify-center -z-10">
+            <div className="w-64 h-64 bg-gradient-to-br from-blue-200/30 to-purple-300/20 dark:from-blue-900/20 dark:to-purple-800/10 rounded-full blur-3xl"></div>
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 mb-4">
             Get in Touch
           </h2>
@@ -70,7 +71,7 @@ const ContactForm = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="animate-fade-in-left">
-            <form onSubmit={handleSubmit} className="space-y-6 bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm dark:shadow-blue-900/5 dark:border dark:border-gray-800">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm dark:shadow-blue-900/5 dark:border dark:border-gray-800 hover-gradient-border">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                   Name
@@ -82,7 +83,7 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="Your name"
                   required
-                  className="w-full"
+                  className="w-full transition-all focus:border-brand-blue dark:focus:border-brand-lightBlue"
                 />
               </div>
               
@@ -98,7 +99,7 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder="your.email@example.com"
                   required
-                  className="w-full"
+                  className="w-full transition-all focus:border-brand-blue dark:focus:border-brand-lightBlue"
                 />
               </div>
               
@@ -113,7 +114,7 @@ const ContactForm = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Your phone number"
-                  className="w-full"
+                  className="w-full transition-all focus:border-brand-blue dark:focus:border-brand-lightBlue"
                 />
               </div>
               
@@ -129,7 +130,7 @@ const ContactForm = () => {
                   placeholder="How can we help you?"
                   rows={5}
                   required
-                  className="w-full resize-none"
+                  className="w-full resize-none transition-all focus:border-brand-blue dark:focus:border-brand-lightBlue"
                 />
               </div>
               
@@ -156,11 +157,11 @@ const ContactForm = () => {
           </div>
           
           <div className="space-y-8 animate-fade-in-right">
-            <div className="mb-8 bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm dark:shadow-blue-900/5 dark:border dark:border-gray-800">
+            <div className="mb-8 bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm dark:shadow-blue-900/5 dark:border dark:border-gray-800 hover-gradient-border">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Contact Information</h3>
               
               <div className="space-y-4">
-                <div className="flex items-start group">
+                <div className="flex items-start group transition-all hover:translate-x-1">
                   <Mail className="h-5 w-5 text-brand-blue dark:text-brand-lightBlue mt-1 mr-3 group-hover:scale-110 transition-transform" />
                   <div>
                     <p className="text-gray-600 dark:text-gray-400">Email</p>
@@ -170,7 +171,7 @@ const ContactForm = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start group">
+                <div className="flex items-start group transition-all hover:translate-x-1">
                   <Phone className="h-5 w-5 text-brand-blue dark:text-brand-lightBlue mt-1 mr-3 group-hover:scale-110 transition-transform" />
                   <div>
                     <p className="text-gray-600 dark:text-gray-400">Phone</p>
@@ -180,7 +181,7 @@ const ContactForm = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start group">
+                <div className="flex items-start group transition-all hover:translate-x-1">
                   <MapPin className="h-5 w-5 text-brand-blue dark:text-brand-lightBlue mt-1 mr-3 group-hover:scale-110 transition-transform" />
                   <div>
                     <p className="text-gray-600 dark:text-gray-400">Location</p>
@@ -192,17 +193,17 @@ const ContactForm = () => {
               </div>
             </div>
             
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm dark:shadow-blue-900/5 dark:border dark:border-gray-800">
+            <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm dark:shadow-blue-900/5 dark:border dark:border-gray-800 hover-gradient-border">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Follow Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 p-3 rounded-full transition-colors transform hover:scale-110 transition-transform">
-                  <Twitter className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                <a href="#" className="group hover-gradient-icon">
+                  <Twitter className="h-5 w-5 text-gray-700 dark:text-gray-300 transition-colors group-hover:text-brand-blue dark:group-hover:text-brand-lightBlue" />
                 </a>
-                <a href="#" className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 p-3 rounded-full transition-colors transform hover:scale-110 transition-transform">
-                  <Linkedin className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                <a href="#" className="group hover-gradient-icon">
+                  <Linkedin className="h-5 w-5 text-gray-700 dark:text-gray-300 transition-colors group-hover:text-brand-blue dark:group-hover:text-brand-lightBlue" />
                 </a>
-                <a href="#" className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 p-3 rounded-full transition-colors transform hover:scale-110 transition-transform">
-                  <Github className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                <a href="#" className="group hover-gradient-icon">
+                  <Github className="h-5 w-5 text-gray-700 dark:text-gray-300 transition-colors group-hover:text-brand-blue dark:group-hover:text-brand-lightBlue" />
                 </a>
               </div>
             </div>

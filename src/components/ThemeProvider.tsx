@@ -44,16 +44,20 @@ export function ThemeProvider({
       root.classList.add(systemTheme);
       
       // Apply proper dark mode body classes
-      document.body.classList.toggle("dark-theme", systemTheme === "dark");
-      document.body.classList.toggle("light-theme", systemTheme === "light");
+      document.body.classList.remove("dark-theme", "light-theme");
+      document.body.classList.add(systemTheme === "dark" ? "dark-theme" : "light-theme");
+      
+      // Set data attribute for tailwind
+      root.setAttribute("data-theme", systemTheme);
       return;
     }
 
     root.classList.add(theme);
+    document.body.classList.remove("dark-theme", "light-theme");
+    document.body.classList.add(theme === "dark" ? "dark-theme" : "light-theme");
     
-    // Apply proper dark mode body classes
-    document.body.classList.toggle("dark-theme", theme === "dark");
-    document.body.classList.toggle("light-theme", theme === "light");
+    // Set data attribute for tailwind
+    root.setAttribute("data-theme", theme);
   }, [theme]);
 
   const value = {
