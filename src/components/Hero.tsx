@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden relative">
+    <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden relative bg-gray-900">
       {/* Enhanced background gradients */}
-      <div className="absolute top-0 right-0 w-3/4 h-1/2 bg-gradient-to-br from-blue-300/40 to-purple-400/30 dark:from-blue-700/30 dark:to-purple-600/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-2/3 h-1/2 bg-gradient-to-tr from-indigo-300/40 to-cyan-400/30 dark:from-indigo-700/30 dark:to-cyan-600/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
+      <div className="absolute top-0 right-0 w-3/4 h-1/2 bg-gradient-to-br from-blue-600/20 to-purple-600/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-2/3 h-1/2 bg-gradient-to-tr from-indigo-600/20 to-cyan-600/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
 
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -19,7 +19,7 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
           >
             <motion.h1 
-              className="text-4xl md:text-5xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300"
+              className="text-4xl md:text-5xl font-bold leading-tight text-white"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -27,7 +27,7 @@ const Hero = () => {
               Empowering Innovation with AI-Driven Software Development
             </motion.h1>
             <motion.p 
-              className="text-lg text-gray-600 dark:text-gray-300 max-w-lg"
+              className="text-lg text-gray-300 max-w-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -41,11 +41,12 @@ const Hero = () => {
               transition={{ delay: 0.6, duration: 0.8 }}
             >
               <Link to="/platform">
-                <Button className="bg-gradient-to-r from-brand-blue to-brand-lightBlue hover:opacity-90 text-white px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-200/50 dark:hover:shadow-blue-900/30 w-full sm:w-auto">
-                  Explore Our Platform
+                <Button className="bg-gradient-to-r from-brand-blue to-brand-lightBlue hover:opacity-90 text-white px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-900/30 w-full sm:w-auto relative group overflow-hidden">
+                  <span className="relative z-10">Explore Our Platform</span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></span>
                 </Button>
               </Link>
-              <Button variant="outline" className="border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800 dark:text-gray-300 px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
+              <Button variant="outline" className="border-gray-700 hover:bg-gray-800 text-gray-300 px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
                 Schedule a Demo
               </Button>
             </motion.div>
@@ -57,14 +58,19 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-blue-200/50 dark:hover:shadow-blue-900/30">
-              <img 
-                src="/lovable-uploads/cc511292-82d3-42da-af65-b707a8c33d40.png" 
-                alt="AI Technology" 
-                className="w-full h-auto rounded-xl"
-              />
+            <div className="relative group rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-800 to-gray-900 transform transition-all duration-300 hover:scale-[1.02]">
+              {/* Animated gradient border */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-x"></div>
+              
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/9eecb1e7-2b2c-49b0-b53e-f2a78ef5d2f4.png" 
+                  alt="AI Technology" 
+                  className="w-full h-auto rounded-xl"
+                />
+              </div>
             </div>
-            <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/5 dark:to-purple-500/5 blur-3xl rounded-full"></div>
+            <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-blue-500/5 to-purple-500/5 blur-3xl rounded-full"></div>
           </motion.div>
         </div>
       </div>

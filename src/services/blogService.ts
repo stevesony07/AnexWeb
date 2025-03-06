@@ -11,7 +11,8 @@ import {
   query, 
   orderBy, 
   where,
-  serverTimestamp
+  serverTimestamp,
+  Timestamp
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
@@ -25,8 +26,8 @@ export type BlogPost = {
   author: string;
   date?: string;
   published: boolean;
-  createdAt?: any;
-  updatedAt?: any;
+  createdAt?: Timestamp | Date;
+  updatedAt?: Timestamp | Date;
 };
 
 const COLLECTION_NAME = 'blogPosts';
@@ -96,13 +97,16 @@ export const createBlogPost = async (blogPost: BlogPost) => {
     
     const docRef = await addDoc(collection(db, COLLECTION_NAME), postData);
     
-    // Return the new post with the generated ID
-    return {
+    // Return the new post with the generated ID and JS Date objects for client use
+    const returnData: BlogPost = {
+      ...blogPost,
       id: docRef.id,
-      ...postData,
-      createdAt: new Date(), // Add a JS Date object for the client since serverTimestamp() is only for Firestore
+      date: formattedDate,
+      createdAt: new Date(),
       updatedAt: new Date()
-    } as BlogPost;
+    };
+    
+    return returnData;
   } catch (error) {
     console.error('Error creating blog post:', error);
     throw error;
@@ -122,12 +126,14 @@ export const updateBlogPost = async (id: string, blogPost: Partial<BlogPost>) =>
     
     await updateDoc(docRef, updateData);
     
-    // Return the updated post data
-    return {
+    // Return the updated post data with JS Date for client use
+    const returnData: BlogPost = {
+      ...blogPost as BlogPost,
       id,
-      ...blogPost,
-      updatedAt: new Date() // Add a JS Date object for the client
-    } as BlogPost;
+      updatedAt: new Date()
+    };
+    
+    return returnData;
   } catch (error) {
     console.error('Error updating blog post:', error);
     throw error;

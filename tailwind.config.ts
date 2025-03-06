@@ -97,7 +97,15 @@ export default {
 				scaleIn: {
 					'0%': { opacity: '0', transform: 'scale(0.95)' },
 					'100%': { opacity: '1', transform: 'scale(1)' }
-				}
+				},
+				'gradient-x': {
+					'0%, 100%': {
+						'background-position': '0% 50%',
+					},
+					'50%': {
+						'background-position': '100% 50%',
+					},
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -106,6 +114,7 @@ export default {
 				'fade-in-left': 'fadeInLeft 0.5s ease-out forwards',
 				'fade-in-right': 'fadeInRight 0.5s ease-out forwards',
 				'scale-in': 'scaleIn 0.3s ease-out forwards',
+				'gradient-x': 'gradient-x 3s ease infinite',
 			}
 		}
 	},

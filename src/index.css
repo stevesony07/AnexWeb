@@ -92,6 +92,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     transition: background-color 0.3s ease, color 0.3s ease;
+    @apply bg-gray-900 text-white;
   }
 
   /* Smooth transition for theme changes */
@@ -175,6 +176,24 @@
     opacity: 0.9;
     transform: scale(1.02);
   }
+}
+
+/* Border gradient animation */
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+  background-size: 200% 200%;
 }
 
 .hero-image {
@@ -280,14 +299,14 @@
 
 /* Enhanced card styles */
 .enhanced-card {
-  @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl dark:border dark:border-gray-700;
+  @apply bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl dark:border dark:border-gray-700;
   transform: translateY(0);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .enhanced-card:hover {
   transform: translateY(-5px);
-  @apply shadow-blue-100 dark:shadow-blue-900/20;
+  @apply shadow-blue-900/20;
 }
 
 /* Card gradient overlay */
