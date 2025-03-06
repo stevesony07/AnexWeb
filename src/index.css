@@ -92,6 +92,13 @@
   body {
     @apply bg-background text-foreground antialiased;
     transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .light-theme body {
+    @apply bg-gray-100 text-gray-900;
+  }
+
+  .dark-theme body {
     @apply bg-gray-900 text-white;
   }
 
@@ -230,7 +237,7 @@
   @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-blue-500;
 }
 
-.dark .gradient-text {
+.dark-theme .gradient-text {
   @apply bg-gradient-to-r from-blue-400 to-indigo-300;
 }
 
@@ -272,7 +279,7 @@
   overflow: hidden;
 }
 
-.dark .hover-gradient-icon {
+.dark-theme .hover-gradient-icon {
   background: rgba(255, 255, 255, 0.05);
 }
 
@@ -299,9 +306,17 @@
 
 /* Enhanced card styles */
 .enhanced-card {
-  @apply bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl dark:border dark:border-gray-700;
+  @apply rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl dark:border dark:border-gray-700;
   transform: translateY(0);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light-theme .enhanced-card {
+  @apply bg-white;
+}
+
+.dark-theme .enhanced-card {
+  @apply bg-gray-800;
 }
 
 .enhanced-card:hover {

@@ -1,22 +1,25 @@
 
-import { db, storage } from '../firebase/config';
+import { db } from "@/firebase/config";
 import { 
   collection, 
-  addDoc, 
-  updateDoc, 
-  deleteDoc, 
-  doc, 
-  getDocs, 
-  getDoc, 
   query, 
   orderBy, 
-  where,
+  getDocs, 
+  doc, 
+  getDoc, 
+  addDoc, 
+  updateDoc, 
+  deleteDoc,
   serverTimestamp,
   Timestamp
-} from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+} from "firebase/firestore";
+import { format } from "date-fns";
 
-export type BlogPost = {
+// Collection name
+const COLLECTION_NAME = "blogPosts";
+
+// Type definitions
+export interface BlogPost {
   id?: string;
   title: string;
   excerpt: string;
@@ -25,67 +28,74 @@ export type BlogPost = {
   category: string;
   author: string;
   date?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
   published: boolean;
-  createdAt?: Timestamp | Date;
-  updatedAt?: Timestamp | Date;
-};
-
-const COLLECTION_NAME = 'blogPosts';
+}
 
 // Get all blog posts
-export const getBlogPosts = async (publishedOnly: boolean = false) => {
+export const getBlogPosts = async (): Promise<BlogPost[]> => {
   try {
-    let q;
-    if (publishedOnly) {
-      q = query(
-        collection(db, COLLECTION_NAME), 
-        where('published', '==', true),
-        orderBy('createdAt', 'desc')
-      );
-    } else {
-      q = query(
-        collection(db, COLLECTION_NAME),
-        orderBy('createdAt', 'desc')
-      );
-    }
+    const postsQuery = query(
+      collection(db, COLLECTION_NAME),
+      orderBy("createdAt", "desc")
+    );
     
-    const querySnapshot = await getDocs(q);
-    return querySnapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    })) as BlogPost[];
+    const querySnapshot = await getDocs(postsQuery);
+    
+    return querySnapshot.docs.map(doc => {
+      const data = doc.data();
+      
+      // Convert Firestore timestamps to JavaScript Date objects
+      const createdAt = data.createdAt instanceof Timestamp ? data.createdAt.toDate() : null;
+      const updatedAt = data.updatedAt instanceof Timestamp ? data.updatedAt.toDate() : null;
+      
+      return {
+        id: doc.id,
+        ...data,
+        createdAt: createdAt,
+        updatedAt: updatedAt
+      } as BlogPost;
+    });
   } catch (error) {
-    console.error('Error getting blog posts:', error);
+    console.error("Error getting blog posts:", error);
     throw error;
   }
 };
 
 // Get a single blog post by ID
-export const getBlogPost = async (id: string) => {
+export const getBlogPostById = async (id: string): Promise<BlogPost | null> => {
   try {
     const docRef = doc(db, COLLECTION_NAME, id);
     const docSnap = await getDoc(docRef);
     
     if (docSnap.exists()) {
+      const data = docSnap.data();
+      
+      // Convert Firestore timestamps to JavaScript Date objects
+      const createdAt = data.createdAt instanceof Timestamp ? data.createdAt.toDate() : null;
+      const updatedAt = data.updatedAt instanceof Timestamp ? data.updatedAt.toDate() : null;
+      
       return {
         id: docSnap.id,
-        ...docSnap.data()
+        ...data,
+        createdAt: createdAt,
+        updatedAt: updatedAt
       } as BlogPost;
     } else {
-      throw new Error('Blog post not found');
+      return null;
     }
   } catch (error) {
-    console.error('Error getting blog post:', error);
+    console.error("Error getting blog post:", error);
     throw error;
   }
 };
 
 // Create a new blog post
-export const createBlogPost = async (blogPost: BlogPost) => {
+export const createBlogPost = async (blogPost: BlogPost): Promise<BlogPost> => {
   try {
-    // Format today's date as a string
-    const today = new Date();
-    const formattedDate = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    // Format date for display
+    const formattedDate = format(new Date(), "MMMM dd, yyyy");
     
     // Add timestamps and formatted date
     const postData = {
@@ -120,13 +130,13 @@ export const createBlogPost = async (blogPost: BlogPost) => {
     
     return returnData;
   } catch (error) {
-    console.error('Error creating blog post:', error);
+    console.error("Error creating blog post:", error);
     throw error;
   }
 };
 
 // Update an existing blog post
-export const updateBlogPost = async (id: string, blogPost: Partial<BlogPost>) => {
+export const updateBlogPost = async (id: string, blogPost: Partial<BlogPost>): Promise<void> => {
   try {
     const docRef = doc(db, COLLECTION_NAME, id);
     
@@ -141,62 +151,35 @@ export const updateBlogPost = async (id: string, blogPost: Partial<BlogPost>) =>
     if (blogPost.category !== undefined) updateData.category = blogPost.category;
     if (blogPost.author !== undefined) updateData.author = blogPost.author;
     if (blogPost.published !== undefined) updateData.published = blogPost.published;
+    if (blogPost.date !== undefined) updateData.date = blogPost.date;
     
     // Always add the updatedAt timestamp
     updateData.updatedAt = serverTimestamp();
     
     await updateDoc(docRef, updateData);
     
-    // Return the updated post data with JS Date for client use
-    const returnData: BlogPost = {
-      ...blogPost as BlogPost,
-      id,
-      updatedAt: new Date()
-    };
-    
-    return returnData;
   } catch (error) {
-    console.error('Error updating blog post:', error);
+    console.error("Error updating blog post:", error);
     throw error;
   }
 };
 
 // Delete a blog post
-export const deleteBlogPost = async (id: string) => {
+export const deleteBlogPost = async (id: string): Promise<void> => {
   try {
-    const docRef = doc(db, COLLECTION_NAME, id);
-    await deleteDoc(docRef);
-    return id;
+    await deleteDoc(doc(db, COLLECTION_NAME, id));
   } catch (error) {
-    console.error('Error deleting blog post:', error);
+    console.error("Error deleting blog post:", error);
     throw error;
   }
 };
 
-// Toggle publish status
-export const togglePublishStatus = async (id: string, currentStatus: boolean) => {
+export const getPublishedBlogPosts = async (): Promise<BlogPost[]> => {
   try {
-    const docRef = doc(db, COLLECTION_NAME, id);
-    await updateDoc(docRef, {
-      published: !currentStatus,
-      updatedAt: serverTimestamp()
-    });
-    return !currentStatus;
+    const posts = await getBlogPosts();
+    return posts.filter(post => post.published);
   } catch (error) {
-    console.error('Error toggling publish status:', error);
-    throw error;
-  }
-};
-
-// Upload an image to Firebase Storage and get the URL
-export const uploadImage = async (file: File): Promise<string> => {
-  try {
-    const storageRef = ref(storage, `blog-images/${Date.now()}_${file.name}`);
-    const snapshot = await uploadBytes(storageRef, file);
-    const downloadURL = await getDownloadURL(snapshot.ref);
-    return downloadURL;
-  } catch (error) {
-    console.error('Error uploading image:', error);
+    console.error("Error getting published blog posts:", error);
     throw error;
   }
 };

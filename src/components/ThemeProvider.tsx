@@ -33,31 +33,48 @@ export function ThemeProvider({
 
   useEffect(() => {
     const root = window.document.documentElement;
+    
+    // Remove all theme classes first
     root.classList.remove("light", "dark");
+    document.body.classList.remove("dark-theme", "light-theme");
 
+    // Determine the actual theme (resolving system preference if needed)
+    let actualTheme = theme;
     if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
+      actualTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light";
-
-      root.classList.add(systemTheme);
-      
-      // Apply proper dark mode body classes
-      document.body.classList.remove("dark-theme", "light-theme");
-      document.body.classList.add(systemTheme === "dark" ? "dark-theme" : "light-theme");
-      
-      // Set data attribute for tailwind
-      root.setAttribute("data-theme", systemTheme);
-      return;
     }
 
-    root.classList.add(theme);
-    document.body.classList.remove("dark-theme", "light-theme");
-    document.body.classList.add(theme === "dark" ? "dark-theme" : "light-theme");
+    // Apply the theme
+    root.classList.add(actualTheme);
+    document.body.classList.add(`${actualTheme}-theme`);
     
     // Set data attribute for tailwind
-    root.setAttribute("data-theme", theme);
+    root.setAttribute("data-theme", actualTheme);
+  }, [theme]);
+
+  // Listen for system theme changes
+  useEffect(() => {
+    if (theme === "system") {
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      
+      const handleChange = () => {
+        const root = window.document.documentElement;
+        const systemTheme = mediaQuery.matches ? "dark" : "light";
+        
+        root.classList.remove("light", "dark");
+        root.classList.add(systemTheme);
+        
+        document.body.classList.remove("dark-theme", "light-theme");
+        document.body.classList.add(`${systemTheme}-theme`);
+        
+        root.setAttribute("data-theme", systemTheme);
+      };
+      
+      mediaQuery.addEventListener("change", handleChange);
+      return () => mediaQuery.removeEventListener("change", handleChange);
+    }
   }, [theme]);
 
   const value = {
