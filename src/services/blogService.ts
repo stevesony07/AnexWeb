@@ -89,7 +89,13 @@ export const createBlogPost = async (blogPost: BlogPost) => {
     
     // Add timestamps and formatted date
     const postData = {
-      ...blogPost,
+      title: blogPost.title,
+      excerpt: blogPost.excerpt,
+      content: blogPost.content,
+      image: blogPost.image,
+      category: blogPost.category,
+      author: blogPost.author,
+      published: blogPost.published,
       date: formattedDate,
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp()
@@ -99,7 +105,13 @@ export const createBlogPost = async (blogPost: BlogPost) => {
     
     // Return the new post with the generated ID and JS Date objects for client use
     const returnData: BlogPost = {
-      ...blogPost,
+      title: blogPost.title,
+      excerpt: blogPost.excerpt,
+      content: blogPost.content,
+      image: blogPost.image,
+      category: blogPost.category,
+      author: blogPost.author,
+      published: blogPost.published,
       id: docRef.id,
       date: formattedDate,
       createdAt: new Date(),
@@ -118,11 +130,20 @@ export const updateBlogPost = async (id: string, blogPost: Partial<BlogPost>) =>
   try {
     const docRef = doc(db, COLLECTION_NAME, id);
     
-    // Add the updatedAt timestamp
-    const updateData = {
-      ...blogPost,
-      updatedAt: serverTimestamp()
-    };
+    // Create update data object without spread operator
+    const updateData: any = {};
+    
+    // Only add fields that are present in blogPost
+    if (blogPost.title !== undefined) updateData.title = blogPost.title;
+    if (blogPost.excerpt !== undefined) updateData.excerpt = blogPost.excerpt;
+    if (blogPost.content !== undefined) updateData.content = blogPost.content;
+    if (blogPost.image !== undefined) updateData.image = blogPost.image;
+    if (blogPost.category !== undefined) updateData.category = blogPost.category;
+    if (blogPost.author !== undefined) updateData.author = blogPost.author;
+    if (blogPost.published !== undefined) updateData.published = blogPost.published;
+    
+    // Always add the updatedAt timestamp
+    updateData.updatedAt = serverTimestamp();
     
     await updateDoc(docRef, updateData);
     
