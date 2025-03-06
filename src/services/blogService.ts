@@ -1,5 +1,4 @@
-
-import { db } from "@/firebase/config";
+import { db, storage } from "@/firebase/config";
 import { 
   collection, 
   query, 
@@ -13,6 +12,7 @@ import {
   serverTimestamp,
   Timestamp
 } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { format } from "date-fns";
 
 // Collection name
@@ -180,6 +180,44 @@ export const getPublishedBlogPosts = async (): Promise<BlogPost[]> => {
     return posts.filter(post => post.published);
   } catch (error) {
     console.error("Error getting published blog posts:", error);
+    throw error;
+  }
+};
+
+// Toggle the publish status of a blog post
+export const togglePublishStatus = async (id: string, currentStatus: boolean): Promise<boolean> => {
+  try {
+    const docRef = doc(db, COLLECTION_NAME, id);
+    const newStatus = !currentStatus;
+    
+    await updateDoc(docRef, {
+      published: newStatus,
+      updatedAt: serverTimestamp()
+    });
+    
+    return newStatus;
+  } catch (error) {
+    console.error("Error toggling publish status:", error);
+    throw error;
+  }
+};
+
+// Upload an image to Firebase Storage and return the download URL
+export const uploadImage = async (file: File): Promise<string> => {
+  try {
+    // Create a unique filename
+    const filename = `${Date.now()}-${file.name}`;
+    const storageRef = ref(storage, `blog-images/${filename}`);
+    
+    // Upload the file
+    await uploadBytes(storageRef, file);
+    
+    // Get the download URL
+    const downloadURL = await getDownloadURL(storageRef);
+    
+    return downloadURL;
+  } catch (error) {
+    console.error("Error uploading image:", error);
     throw error;
   }
 };
