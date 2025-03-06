@@ -30,7 +30,9 @@ const Index = () => {
     const handleIntersection = (entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
+          // Add different animation classes based on data attribute
+          const animationType = entry.target.dataset.animationType || 'fade-in';
+          entry.target.classList.add(`animate-${animationType}`);
           observer.unobserve(entry.target);
         }
       });
@@ -38,7 +40,7 @@ const Index = () => {
 
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
     
-    // Target elements to animate on scroll
+    // Target elements to animate on scroll with different animation types
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
       observer.observe(el);
     });
@@ -56,26 +58,26 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col dark:bg-gray-900">
+    <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900 light:bg-gray-100">
       <Header />
       <main className="flex-grow">
         <Hero />
-        <div className="animate-on-scroll opacity-0">
+        <div className="animate-on-scroll opacity-0" data-animation-type="fade-in">
           <Features />
         </div>
-        <div ref={servicesRef} className="animate-on-scroll opacity-0">
+        <div ref={servicesRef} className="animate-on-scroll opacity-0" data-animation-type="fade-in-left">
           <Services />
         </div>
-        <div className="animate-on-scroll opacity-0">
+        <div className="animate-on-scroll opacity-0" data-animation-type="fade-in-right">
           <Platform />
         </div>
-        <div ref={aboutRef} className="animate-on-scroll opacity-0">
+        <div ref={aboutRef} className="animate-on-scroll opacity-0" data-animation-type="scale-in">
           <CaseStudies />
         </div>
-        <div className="animate-on-scroll opacity-0">
+        <div className="animate-on-scroll opacity-0" data-animation-type="fade-in">
           <Insights />
         </div>
-        <div ref={contactRef} className="animate-on-scroll opacity-0">
+        <div ref={contactRef} className="animate-on-scroll opacity-0" data-animation-type="fade-in">
           <ContactForm />
         </div>
       </main>

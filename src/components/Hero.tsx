@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden relative bg-gray-900">
+    <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden relative bg-gradient-to-b from-gray-900 to-gray-800 dark:from-gray-900 dark:to-gray-800 light:from-gray-100 light:to-gray-200">
       {/* Enhanced background gradients */}
       <div className="absolute top-0 right-0 w-3/4 h-1/2 bg-gradient-to-br from-blue-600/20 to-purple-600/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
       <div className="absolute bottom-0 left-0 w-2/3 h-1/2 bg-gradient-to-tr from-indigo-600/20 to-cyan-600/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
@@ -19,7 +19,7 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
           >
             <motion.h1 
-              className="text-4xl md:text-5xl font-bold leading-tight text-white"
+              className="text-4xl md:text-5xl font-bold leading-tight text-white dark:text-white light:text-white"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -27,7 +27,7 @@ const Hero = () => {
               Empowering Innovation with AI-Driven Software Development
             </motion.h1>
             <motion.p 
-              className="text-lg text-gray-300 max-w-lg"
+              className="text-lg text-gray-300 dark:text-gray-300 light:text-gray-200 max-w-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -41,12 +41,12 @@ const Hero = () => {
               transition={{ delay: 0.6, duration: 0.8 }}
             >
               <Link to="/platform">
-                <Button className="bg-gradient-to-r from-brand-blue to-brand-lightBlue hover:opacity-90 text-white px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-900/30 w-full sm:w-auto relative group overflow-hidden">
+                <Button className="bg-gradient-to-r from-brand-blue to-brand-lightBlue hover:opacity-90 text-white px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-900/30 w-full sm:w-auto relative group overflow-hidden hover-gradient-border">
                   <span className="relative z-10">Explore Our Platform</span>
                   <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></span>
                 </Button>
               </Link>
-              <Button variant="outline" className="border-gray-700 hover:bg-gray-800 text-gray-300 px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
+              <Button variant="outline" className="border-gray-700 hover:bg-gray-800 text-gray-300 px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 w-full sm:w-auto hover-gradient-border">
                 Schedule a Demo
               </Button>
             </motion.div>
@@ -64,9 +64,9 @@ const Hero = () => {
               
               <div className="relative">
                 <img 
-                  src="/lovable-uploads/9eecb1e7-2b2c-49b0-b53e-f2a78ef5d2f4.png" 
+                  src="/lovable-uploads/3faa7940-7c80-40a7-83a5-935553573642.png" 
                   alt="AI Technology" 
-                  className="w-full h-auto rounded-xl"
+                  className="w-full h-auto rounded-xl hero-image"
                 />
               </div>
             </div>

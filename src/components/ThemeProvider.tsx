@@ -36,6 +36,7 @@ export function ThemeProvider({
     
     // Remove all theme classes first
     root.classList.remove("light", "dark");
+    root.classList.remove("light-theme", "dark-theme");
     document.body.classList.remove("dark-theme", "light-theme");
 
     // Determine the actual theme (resolving system preference if needed)
@@ -46,8 +47,9 @@ export function ThemeProvider({
         : "light";
     }
 
-    // Apply the theme
+    // Apply the theme classes
     root.classList.add(actualTheme);
+    root.classList.add(`${actualTheme}-theme`);
     document.body.classList.add(`${actualTheme}-theme`);
     
     // Set data attribute for tailwind
@@ -63,10 +65,14 @@ export function ThemeProvider({
         const root = window.document.documentElement;
         const systemTheme = mediaQuery.matches ? "dark" : "light";
         
+        // Remove existing theme classes
         root.classList.remove("light", "dark");
-        root.classList.add(systemTheme);
-        
+        root.classList.remove("light-theme", "dark-theme");
         document.body.classList.remove("dark-theme", "light-theme");
+        
+        // Add new theme classes
+        root.classList.add(systemTheme);
+        root.classList.add(`${systemTheme}-theme`);
         document.body.classList.add(`${systemTheme}-theme`);
         
         root.setAttribute("data-theme", systemTheme);

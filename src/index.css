@@ -82,6 +82,28 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+  }
 }
 
 @layer base {
@@ -140,6 +162,18 @@
   animation: fadeIn 0.8s ease-out forwards;
 }
 
+.animate-fade-in-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
 /* Enhanced animations */
 @keyframes fadeIn {
   from {
@@ -171,6 +205,17 @@
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -241,6 +286,10 @@
   @apply bg-gradient-to-r from-blue-400 to-indigo-300;
 }
 
+.light-theme .gradient-text {
+  @apply bg-gradient-to-r from-blue-600 to-indigo-500;
+}
+
 /* Gradient hover underline effect */
 .hover-gradient-underline {
   position: relative;
@@ -283,6 +332,10 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
+.light-theme .hover-gradient-icon {
+  background: rgba(0, 0, 0, 0.05);
+}
+
 .hover-gradient-icon::before {
   content: '';
   position: absolute;
@@ -306,7 +359,7 @@
 
 /* Enhanced card styles */
 .enhanced-card {
-  @apply rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl dark:border dark:border-gray-700;
+  @apply rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl dark:border dark:border-gray-700 light:border light:border-gray-200;
   transform: translateY(0);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
