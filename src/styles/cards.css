@@ -1,0 +1,54 @@
+
+@tailwind components;
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced card styles */
+.enhanced-card {
+  @apply rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl dark:border dark:border-gray-700 border border-gray-200;
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light-theme .enhanced-card {
+  @apply bg-white;
+}
+
+.dark-theme .enhanced-card {
+  @apply bg-gray-800;
+}
+
+.enhanced-card:hover {
+  transform: translateY(-5px);
+  @apply shadow-blue-900/20;
+}
+
+/* Card gradient overlay */
+.card-gradient-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-gradient-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2), rgba(217, 70, 239, 0.2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-gradient-overlay:hover::before {
+  opacity: 1;
+}

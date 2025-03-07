@@ -1,0 +1,107 @@
+
+@tailwind utilities;
+
+/* Gradient borders and shadows */
+.hover-gradient-border {
+  position: relative;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.hover-gradient-border:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #d946ef);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-gradient-border:hover:before {
+  opacity: 0.7;
+}
+
+/* Gradient text effect */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-blue-500;
+}
+
+.dark-theme .gradient-text {
+  @apply bg-gradient-to-r from-blue-400 to-indigo-300;
+}
+
+.light-theme .gradient-text {
+  @apply bg-gradient-to-r from-blue-600 to-indigo-500;
+}
+
+/* Gradient hover underline effect */
+.hover-gradient-underline {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hover-gradient-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.hover-gradient-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Gradient icon hover */
+.hover-gradient-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.dark-theme .hover-gradient-icon {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.light-theme .hover-gradient-icon {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.hover-gradient-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #d946ef);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-gradient-icon:hover::before {
+  opacity: 0.8;
+}
+
+.hover-gradient-icon svg {
+  z-index: 1;
+}
+
+.hover-gradient-icon:hover svg {
+  color: white !important;
+}
