@@ -1,13 +1,10 @@
-
 import { Code, BrainCircuit, Database, Settings } from 'lucide-react';
-
-const ServiceCard = ({ 
-  icon: Icon, 
-  title, 
-  description, 
+const ServiceCard = ({
+  icon: Icon,
+  title,
+  description
 }) => {
-  return (
-    <div className="relative group overflow-hidden rounded-lg">
+  return <div className="relative group overflow-hidden rounded-lg">
       {/* Animated gradient border */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-x"></div>
       
@@ -25,36 +22,27 @@ const ServiceCard = ({
           </a>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 const Services = () => {
-  const serviceItems = [
-    {
-      icon: Code,
-      title: 'AI-Powered Software Development',
-      description: 'Rapidly deploy quality code with automated codebase creation, bug detection, and optimization.'
-    },
-    {
-      icon: BrainCircuit,
-      title: 'Intelligent Automation & DevOps',
-      description: 'Streamline your production cycle and deployments with AI-based automation.'
-    },
-    {
-      icon: Database,
-      title: 'Data Engineering & Analytics',
-      description: 'Leverage AI for insights, processing data and unlocking the full value of your information.'
-    },
-    {
-      icon: Settings,
-      title: 'Custom AI Model Development',
-      description: 'Fine-tuned AI models built specifically for your business and industry needs.'
-    }
-  ];
-
-  return (
-    <section className="py-16 md:py-24 bg-gray-900">
+  const serviceItems = [{
+    icon: Code,
+    title: 'AI-Powered Software Development',
+    description: 'Rapidly deploy quality code with automated codebase creation, bug detection, and optimization.'
+  }, {
+    icon: BrainCircuit,
+    title: 'Intelligent Automation & DevOps',
+    description: 'Streamline your production cycle and deployments with AI-based automation.'
+  }, {
+    icon: Database,
+    title: 'Data Engineering & Analytics',
+    description: 'Leverage AI for insights, processing data and unlocking the full value of your information.'
+  }, {
+    icon: Settings,
+    title: 'Custom AI Model Development',
+    description: 'Fine-tuned AI models built specifically for your business and industry needs.'
+  }];
+  return <section className="py-16 md:py-24 bg-zinc-950">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -63,18 +51,9 @@ const Services = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 staggered-animation">
-          {serviceItems.map((service, index) => (
-            <ServiceCard 
-              key={index}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-            />
-          ))}
+          {serviceItems.map((service, index) => <ServiceCard key={index} icon={service.icon} title={service.title} description={service.description} />)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Services;
