@@ -55,13 +55,13 @@ export function ThemeProvider({
     // Set data attribute for tailwind
     root.setAttribute("data-theme", actualTheme);
 
-    // Apply additional class to body to ensure proper theme application
+    // Apply consistent background and text colors to body
     if (actualTheme === 'light') {
-      document.body.classList.add('bg-gray-100', 'text-gray-900');
-      document.body.classList.remove('bg-gray-900', 'text-white');
+      document.body.classList.add('bg-app-light', 'text-app-light');
+      document.body.classList.remove('bg-app-dark', 'text-app-dark', 'bg-gray-900', 'text-white', 'bg-gray-100', 'text-gray-900');
     } else {
-      document.body.classList.add('bg-gray-900', 'text-white');
-      document.body.classList.remove('bg-gray-100', 'text-gray-900');
+      document.body.classList.add('bg-app-dark', 'text-app-dark');
+      document.body.classList.remove('bg-app-light', 'text-app-light', 'bg-gray-100', 'text-gray-900', 'bg-gray-900', 'text-white');
     }
   }, [theme]);
 
@@ -86,13 +86,13 @@ export function ThemeProvider({
         
         root.setAttribute("data-theme", systemTheme);
 
-        // Apply additional class to body for theme
+        // Apply consistent background and text colors to body
         if (systemTheme === 'light') {
-          document.body.classList.add('bg-gray-100', 'text-gray-900');
-          document.body.classList.remove('bg-gray-900', 'text-white');
+          document.body.classList.add('bg-app-light', 'text-app-light');
+          document.body.classList.remove('bg-app-dark', 'text-app-dark', 'bg-gray-900', 'text-white', 'bg-gray-100', 'text-gray-900');
         } else {
-          document.body.classList.add('bg-gray-900', 'text-white');
-          document.body.classList.remove('bg-gray-100', 'text-gray-900');
+          document.body.classList.add('bg-app-dark', 'text-app-dark');
+          document.body.classList.remove('bg-app-light', 'text-app-light', 'bg-gray-100', 'text-gray-900', 'bg-gray-900', 'text-white');
         }
       };
       

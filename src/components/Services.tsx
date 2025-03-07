@@ -11,7 +11,7 @@ const ServiceCard = ({
       {/* Animated gradient border */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-x"></div>
       
-      <div className="relative flex flex-col md:flex-row gap-6 p-6 bg-gray-900 dark:bg-gray-900 rounded-lg transition-all duration-300">
+      <div className="relative flex flex-col md:flex-row gap-6 p-6 bg-gray-800 dark:bg-gray-800 rounded-lg transition-all duration-300">
         <div className="flex-shrink-0">
           <div className="w-12 h-12 bg-blue-900/30 rounded-md flex items-center justify-center">
             <Icon className="h-6 w-6 text-brand-lightBlue" />
@@ -54,7 +54,7 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gray-900 dark:bg-gray-900">
+    <section className="py-16 md:py-24 bg-gray-900">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">

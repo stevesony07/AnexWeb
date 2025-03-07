@@ -19,7 +19,7 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
           >
             <motion.h1 
-              className="text-4xl md:text-5xl font-bold leading-tight text-white dark:text-white light:text-white"
+              className="text-4xl md:text-5xl font-bold leading-tight text-white"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -27,7 +27,7 @@ const Hero = () => {
               Empowering Innovation with AI-Driven Software Development
             </motion.h1>
             <motion.p 
-              className="text-lg text-gray-300 dark:text-gray-300 light:text-gray-200 max-w-lg"
+              className="text-lg text-gray-300"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -64,7 +64,7 @@ const Hero = () => {
               
               <div className="relative">
                 <img 
-                  src="/lovable-uploads/3faa7940-7c80-40a7-83a5-935553573642.png" 
+                  src="/lovable-uploads/04843112-5a73-454d-97a5-3527c3549f55.png" 
                   alt="AI Technology" 
                   className="w-full h-auto rounded-xl hero-image"
                 />

@@ -68,6 +68,16 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			backgroundColor: {
+				'app-light': '#f5f5f5',
+				'app-dark': '#121212',
+				'section-light': '#ffffff',
+				'section-dark': '#1a1a1a'
+			},
+			textColor: {
+				'app-light': '#333333',
+				'app-dark': '#ffffff'
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
