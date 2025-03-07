@@ -1,11 +1,14 @@
+
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+
 const Hero = () => {
-  return <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden relative bg-gradient-to-b from-gray-900 to-gray-800 dark:from-gray-900 dark:to-gray-800 light:from-gray-100 light:to-gray-200 bg-zinc-950">
+  return (
+    <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden relative bg-gradient-to-b from-gray-900 to-gray-800 dark:from-gray-900 dark:to-gray-800 bg-gray-100 dark:bg-zinc-950">
       {/* Enhanced background gradients */}
-      <div className="absolute top-0 right-0 w-3/4 h-1/2 bg-gradient-to-br from-blue-600/20 to-purple-600/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-2/3 h-1/2 bg-gradient-to-tr from-indigo-600/20 to-cyan-600/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+      <div className="absolute top-0 right-0 w-3/4 h-1/2 bg-gradient-to-br from-blue-600/20 to-purple-600/10 dark:from-blue-600/20 dark:to-purple-600/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-2/3 h-1/2 bg-gradient-to-tr from-indigo-600/20 to-cyan-600/10 dark:from-indigo-600/20 dark:to-cyan-600/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
 
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -18,7 +21,7 @@ const Hero = () => {
         }} transition={{
           duration: 0.6
         }}>
-            <motion.h1 className="text-4xl md:text-5xl font-bold leading-tight text-white" initial={{
+            <motion.h1 className="text-4xl md:text-5xl font-bold leading-tight text-gray-900 dark:text-white" initial={{
             opacity: 0
           }} animate={{
             opacity: 1
@@ -28,7 +31,7 @@ const Hero = () => {
           }}>
               Empowering Innovation with AI-Driven Software Development
             </motion.h1>
-            <motion.p className="text-lg text-gray-300" initial={{
+            <motion.p className="text-lg text-gray-700 dark:text-gray-300" initial={{
             opacity: 0
           }} animate={{
             opacity: 1
@@ -52,7 +55,7 @@ const Hero = () => {
                   <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></span>
                 </Button>
               </Link>
-              <Button variant="outline" className="border-gray-700 hover:bg-gray-800 text-gray-300 px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 w-full sm:w-auto hover-gradient-border">
+              <Button variant="outline" className="border-gray-700 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 w-full sm:w-auto hover-gradient-border">
                 Schedule a Demo
               </Button>
             </motion.div>
@@ -68,7 +71,7 @@ const Hero = () => {
           duration: 0.8,
           delay: 0.3
         }}>
-            <div className="relative group rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-800 to-gray-900 transform transition-all duration-300 hover:scale-[1.02]">
+            <div className="relative group rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900 transform transition-all duration-300 hover:scale-[1.02]">
               {/* Animated gradient border */}
               <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-x"></div>
               
@@ -80,6 +83,8 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
