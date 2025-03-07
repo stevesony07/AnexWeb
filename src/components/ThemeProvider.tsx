@@ -54,6 +54,15 @@ export function ThemeProvider({
     
     // Set data attribute for tailwind
     root.setAttribute("data-theme", actualTheme);
+
+    // Apply additional class to body to ensure proper theme application
+    if (actualTheme === 'light') {
+      document.body.classList.add('bg-gray-100', 'text-gray-900');
+      document.body.classList.remove('bg-gray-900', 'text-white');
+    } else {
+      document.body.classList.add('bg-gray-900', 'text-white');
+      document.body.classList.remove('bg-gray-100', 'text-gray-900');
+    }
   }, [theme]);
 
   // Listen for system theme changes
@@ -76,6 +85,15 @@ export function ThemeProvider({
         document.body.classList.add(`${systemTheme}-theme`);
         
         root.setAttribute("data-theme", systemTheme);
+
+        // Apply additional class to body for theme
+        if (systemTheme === 'light') {
+          document.body.classList.add('bg-gray-100', 'text-gray-900');
+          document.body.classList.remove('bg-gray-900', 'text-white');
+        } else {
+          document.body.classList.add('bg-gray-900', 'text-white');
+          document.body.classList.remove('bg-gray-100', 'text-gray-900');
+        }
       };
       
       mediaQuery.addEventListener("change", handleChange);

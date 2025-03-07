@@ -359,7 +359,8 @@
 
 /* Enhanced card styles */
 .enhanced-card {
-  @apply rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl dark:border dark:border-gray-700 light:border light:border-gray-200;
+  @apply rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl;
+  @apply dark:border dark:border-gray-700 border border-gray-200;
   transform: translateY(0);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
