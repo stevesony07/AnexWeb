@@ -37,7 +37,7 @@ export function ThemeProvider({
     // Remove all theme classes first
     root.classList.remove("light", "dark");
     root.classList.remove("light-theme", "dark-theme");
-    document.body.classList.remove("dark-theme", "light-theme");
+    document.body.classList.remove("light-theme", "dark-theme");
 
     // Determine the actual theme (resolving system preference if needed)
     let actualTheme = theme;
@@ -54,15 +54,6 @@ export function ThemeProvider({
     
     // Set data attribute for tailwind
     root.setAttribute("data-theme", actualTheme);
-
-    // Apply consistent background and text colors to body
-    if (actualTheme === 'light') {
-      document.body.classList.add('bg-app-light', 'text-app-light');
-      document.body.classList.remove('bg-app-dark', 'text-app-dark', 'bg-gray-900', 'text-white', 'bg-gray-100', 'text-gray-900');
-    } else {
-      document.body.classList.add('bg-app-dark', 'text-app-dark');
-      document.body.classList.remove('bg-app-light', 'text-app-light', 'bg-gray-100', 'text-gray-900', 'bg-gray-900', 'text-white');
-    }
   }, [theme]);
 
   // Listen for system theme changes
@@ -77,7 +68,7 @@ export function ThemeProvider({
         // Remove existing theme classes
         root.classList.remove("light", "dark");
         root.classList.remove("light-theme", "dark-theme");
-        document.body.classList.remove("dark-theme", "light-theme");
+        document.body.classList.remove("light-theme", "dark-theme");
         
         // Add new theme classes
         root.classList.add(systemTheme);
@@ -85,15 +76,6 @@ export function ThemeProvider({
         document.body.classList.add(`${systemTheme}-theme`);
         
         root.setAttribute("data-theme", systemTheme);
-
-        // Apply consistent background and text colors to body
-        if (systemTheme === 'light') {
-          document.body.classList.add('bg-app-light', 'text-app-light');
-          document.body.classList.remove('bg-app-dark', 'text-app-dark', 'bg-gray-900', 'text-white', 'bg-gray-100', 'text-gray-900');
-        } else {
-          document.body.classList.add('bg-app-dark', 'text-app-dark');
-          document.body.classList.remove('bg-app-light', 'text-app-light', 'bg-gray-100', 'text-gray-900', 'bg-gray-900', 'text-white');
-        }
       };
       
       mediaQuery.addEventListener("change", handleChange);

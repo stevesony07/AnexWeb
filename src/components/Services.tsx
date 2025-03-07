@@ -1,29 +1,34 @@
+
 import { Code, BrainCircuit, Database, Settings } from 'lucide-react';
+
 const ServiceCard = ({
   icon: Icon,
   title,
   description
 }) => {
-  return <div className="relative group overflow-hidden rounded-lg">
+  return (
+    <div className="relative group overflow-hidden rounded-lg">
       {/* Animated gradient border */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-x"></div>
       
-      <div className="relative flex flex-col md:flex-row gap-6 p-6 bg-gray-800 dark:bg-gray-800 rounded-lg transition-all duration-300">
+      <div className="relative flex flex-col md:flex-row gap-6 p-6 bg-white dark:bg-gray-800 rounded-lg transition-colors duration-300">
         <div className="flex-shrink-0">
-          <div className="w-12 h-12 bg-blue-900/30 rounded-md flex items-center justify-center">
-            <Icon className="h-6 w-6 text-brand-lightBlue" />
+          <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-md flex items-center justify-center">
+            <Icon className="h-6 w-6 text-brand-blue dark:text-brand-lightBlue" />
           </div>
         </div>
         <div className="flex-1">
-          <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-          <p className="text-gray-300 mb-4">{description}</p>
-          <a href="#" className="text-brand-lightBlue font-medium hover:underline inline-flex items-center group">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-300">{title}</h3>
+          <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">{description}</p>
+          <a href="#" className="text-brand-blue dark:text-brand-lightBlue font-medium hover:underline inline-flex items-center group transition-colors duration-300">
             Learn more <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 const Services = () => {
   const serviceItems = [{
     icon: Code,
@@ -42,10 +47,12 @@ const Services = () => {
     title: 'Custom AI Model Development',
     description: 'Fine-tuned AI models built specifically for your business and industry needs.'
   }];
-  return <section className="py-16 md:py-24 bg-zinc-950">
+  
+  return (
+    <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
             Our Services
           </h2>
         </div>
@@ -54,6 +61,8 @@ const Services = () => {
           {serviceItems.map((service, index) => <ServiceCard key={index} icon={service.icon} title={service.title} description={service.description} />)}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Services;

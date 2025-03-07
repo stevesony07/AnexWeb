@@ -3,7 +3,7 @@ import { Code, Beaker, CloudCog, ShieldCheck, BarChart3, Shapes } from 'lucide-r
 
 const PlatformFeature = ({ icon: Icon, title, description }) => {
   return (
-    <div className="flex flex-col items-center text-center p-6 card-hover dark:bg-gray-800 dark:border dark:border-gray-700 rounded-lg">
+    <div className="flex flex-col items-center text-center p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition-colors duration-300 card-hover">
       <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mb-4">
         <Icon className="h-6 w-6 text-brand-blue dark:text-brand-lightBlue" />
       </div>
@@ -48,13 +48,13 @@ const Platform = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+    <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
             AgenticNex.ai Platform
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
             The Future of AI-Driven Software Development
           </p>
         </div>
