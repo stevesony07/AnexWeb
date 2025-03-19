@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden relative bg-gradient-to-b from-gray-900 to-gray-800 dark:from-gray-900 dark:to-gray-800 bg-gray-100 dark:bg-zinc-950">
+    <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden relative bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       {/* Enhanced background gradients */}
-      <div className="absolute top-0 right-0 w-3/4 h-1/2 bg-gradient-to-br from-blue-600/20 to-purple-600/10 dark:from-blue-600/20 dark:to-purple-600/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-2/3 h-1/2 bg-gradient-to-tr from-indigo-600/20 to-cyan-600/10 dark:from-indigo-600/20 dark:to-cyan-600/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+      <div className="absolute top-0 right-0 w-3/4 h-1/2 bg-gradient-to-br from-blue-600/10 to-purple-600/5 dark:from-blue-600/20 dark:to-purple-600/10 rounded-full blur-3xl -z-10 animate-pulse transition-all duration-300"></div>
+      <div className="absolute bottom-0 left-0 w-2/3 h-1/2 bg-gradient-to-tr from-indigo-600/10 to-cyan-600/5 dark:from-indigo-600/20 dark:to-cyan-600/10 rounded-full blur-3xl -z-10 animate-pulse transition-all duration-300"></div>
 
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -21,7 +21,7 @@ const Hero = () => {
         }} transition={{
           duration: 0.6
         }}>
-            <motion.h1 className="text-4xl md:text-5xl font-bold leading-tight text-gray-900 dark:text-white" initial={{
+            <motion.h1 className="text-4xl md:text-5xl font-bold leading-tight text-gray-900 dark:text-white transition-colors duration-300" initial={{
             opacity: 0
           }} animate={{
             opacity: 1
@@ -31,7 +31,7 @@ const Hero = () => {
           }}>
               Empowering Innovation with AI-Driven Software Development
             </motion.h1>
-            <motion.p className="text-lg text-gray-700 dark:text-gray-300" initial={{
+            <motion.p className="text-lg text-gray-700 dark:text-gray-300 transition-colors duration-300" initial={{
             opacity: 0
           }} animate={{
             opacity: 1
