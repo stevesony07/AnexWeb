@@ -2,8 +2,12 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useTheme } from '@/components/ThemeProvider';
 
 const Hero = () => {
+  const { theme } = useTheme();
+  const isDarkMode = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden relative bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       {/* Enhanced background gradients */}
@@ -76,7 +80,19 @@ const Hero = () => {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-x"></div>
               
               <div className="relative">
-                <img src="/lovable-uploads/04843112-5a73-454d-97a5-3527c3549f55.png" alt="AI Technology" className="w-full h-auto rounded-xl hero-image" />
+                {isDarkMode ? (
+                  <img 
+                    src="/lovable-uploads/d3c8570e-25fe-40bb-bfd5-ee3ede171a1d.png" 
+                    alt="AgenticNex Logo White" 
+                    className="w-full h-auto rounded-xl hero-image" 
+                  />
+                ) : (
+                  <img 
+                    src="/lovable-uploads/b49ef56e-c238-4934-af77-de9f62063d94.png" 
+                    alt="AgenticNex Logo Black" 
+                    className="w-full h-auto rounded-xl hero-image" 
+                  />
+                )}
               </div>
             </div>
             <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-blue-500/5 to-purple-500/5 blur-3xl rounded-full"></div>

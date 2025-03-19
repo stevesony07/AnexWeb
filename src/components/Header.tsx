@@ -41,11 +41,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <img 
-              src="/lovable-uploads/72c67fe1-d55b-4cd8-8fce-84f332abd070.png" 
-              alt="AgenticNex Logo" 
-              className="h-24 md:h-28 transition-transform duration-300 hover:scale-105" 
-            />
+            {/* Logo has been removed as requested */}
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">
