@@ -11,8 +11,8 @@ const Hero = () => {
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden relative bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       {/* Enhanced background gradients */}
-      <div className="absolute top-0 right-0 w-3/4 h-1/2 bg-gradient-to-br from-blue-600/10 to-purple-600/5 dark:from-blue-600/20 dark:to-purple-600/10 rounded-full blur-3xl -z-10 animate-pulse transition-all duration-300"></div>
-      <div className="absolute bottom-0 left-0 w-2/3 h-1/2 bg-gradient-to-tr from-indigo-600/10 to-cyan-600/5 dark:from-indigo-600/20 dark:to-cyan-600/10 rounded-full blur-3xl -z-10 animate-pulse transition-all duration-300"></div>
+      <div className="absolute top-0 right-0 w-3/4 h-1/2 bg-gradient-to-br from-blue-600/10 to-purple-600/5 dark:from-blue-600/20 dark:to-purple-600/10 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-0 left-0 w-2/3 h-1/2 bg-gradient-to-tr from-indigo-600/10 to-cyan-600/5 dark:from-indigo-600/20 dark:to-cyan-600/10 rounded-full blur-3xl -z-10"></div>
 
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -82,13 +82,13 @@ const Hero = () => {
               <div className="relative">
                 {isDarkMode ? (
                   <img 
-                    src="/lovable-uploads/83523fba-18f7-4324-a879-56fc001efcef.png" 
+                    src="/lovable-uploads/d3c8570e-25fe-40bb-bfd5-ee3ede171a1d.png"
                     alt="AgenticNex Logo Dark" 
                     className="w-full h-auto rounded-xl" 
                   />
                 ) : (
                   <img 
-                    src="/lovable-uploads/099f90a5-3ad1-4679-8e88-3ba7ab873e55.png" 
+                    src="/lovable-uploads/b49ef56e-c238-4934-af77-de9f62063d94.png"
                     alt="AgenticNex Logo Light" 
                     className="w-full h-auto rounded-xl" 
                   />
