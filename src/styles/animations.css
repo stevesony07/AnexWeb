@@ -41,9 +41,7 @@
   background-size: 200% 200%;
 }
 
-.hero-image {
-  animation: pulse 5s infinite;
-}
+/* Removed pulse animation for hero-image */
 
 /* Enhanced animations keyframes */
 @keyframes fadeIn {
