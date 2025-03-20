@@ -79,13 +79,13 @@ const Hero = () => {
               <div className="relative">
                 {isDarkMode ? (
                   <img 
-                    src="/lovable-uploads/d3c8570e-25fe-40bb-bfd5-ee3ede171a1d.png"
+                    src="/lovable-uploads/b49ef56e-c238-4934-af77-de9f62063d94.png"
                     alt="AgenticNex Logo Light" 
                     className="w-full h-auto rounded-xl" 
                   />
                 ) : (
                   <img 
-                    src="/lovable-uploads/b49ef56e-c238-4934-af77-de9f62063d94.png"
+                    src="/lovable-uploads/d3c8570e-25fe-40bb-bfd5-ee3ede171a1d.png"
                     alt="AgenticNex Logo Dark" 
                     className="w-full h-auto rounded-xl" 
                   />
