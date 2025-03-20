@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -75,10 +74,7 @@ const Hero = () => {
           duration: 0.8,
           delay: 0.3
         }}>
-            <div className="relative group rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900 transform transition-all duration-300 hover:scale-[1.02]">
-              {/* Animated gradient border */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-500 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-x"></div>
-              
+            <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900 transform transition-all duration-300 hover:scale-[1.02]">
               <div className="relative">
                 {isDarkMode ? (
                   <img 
