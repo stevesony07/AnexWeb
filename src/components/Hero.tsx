@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -32,7 +33,7 @@ const Hero = () => {
             delay: 0.2,
             duration: 0.8
           }}>
-              Empowering Innovation with AI-Driven Software Development
+              Next-Gen Agentic AI, LLM & RAG-Based Solutions Provider
             </motion.h1>
             <motion.p className="text-lg text-gray-700 dark:text-gray-300 transition-colors duration-300" initial={{
             opacity: 0
@@ -42,7 +43,7 @@ const Hero = () => {
             delay: 0.4,
             duration: 0.8
           }}>
-              AgenticNex leverages intelligent agents to accelerate AI-based engineering, automation, and innovation—delivering scalable, secure, and high-performance solutions for businesses worldwide.
+              Transforming Enterprise Intelligence with Cutting-Edge AI. Our AI-driven platforms break down data silos, enhance decision-making, and enable seamless cross-functional collaboration for industries such as oil & gas, healthcare, finance, and manufacturing.
             </motion.p>
             <motion.div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 mt-2" initial={{
             opacity: 0
@@ -59,7 +60,7 @@ const Hero = () => {
                 </Button>
               </Link>
               <Button variant="outline" className="border-gray-700 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 px-8 py-6 text-base transition-all duration-300 transform hover:scale-105 w-full sm:w-auto hover-gradient-border">
-                Schedule a Demo
+                Get a Free Consultation
               </Button>
             </motion.div>
           </motion.div>
@@ -78,14 +79,14 @@ const Hero = () => {
               <div className="relative">
                 {isDarkMode ? (
                   <img 
-                    src="/lovable-uploads/b49ef56e-c238-4934-af77-de9f62063d94.png"
-                    alt="AgenticNex Logo Dark" 
+                    src="/lovable-uploads/d3c8570e-25fe-40bb-bfd5-ee3ede171a1d.png"
+                    alt="AgenticNex Logo Light" 
                     className="w-full h-auto rounded-xl" 
                   />
                 ) : (
                   <img 
-                    src="/lovable-uploads/d3c8570e-25fe-40bb-bfd5-ee3ede171a1d.png"
-                    alt="AgenticNex Logo Light" 
+                    src="/lovable-uploads/b49ef56e-c238-4934-af77-de9f62063d94.png"
+                    alt="AgenticNex Logo Dark" 
                     className="w-full h-auto rounded-xl" 
                   />
                 )}

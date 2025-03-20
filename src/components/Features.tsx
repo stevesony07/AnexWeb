@@ -1,5 +1,5 @@
 
-import { Code, Cpu, Shield } from 'lucide-react';
+import { BrainCircuit, Database, LayoutGrid, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const FeatureCard = ({
@@ -29,17 +29,21 @@ const FeatureCard = ({
 
 const Features = () => {
   const features = [{
-    icon: Cpu,
-    title: "AI-Powered Development",
-    description: "Advance your applications with our AI-driven frameworks and development expertise."
+    icon: BrainCircuit,
+    title: "Agentic AI for Autonomous Decision-Making",
+    description: "Leverage AI agents that understand complex workflows, automate processes, and provide intelligent insights with minimal human intervention."
   }, {
-    icon: Code,
-    title: "Next-Gen Engineering",
-    description: "Build smarter, faster systems with intelligent software and cutting-edge tech."
+    icon: Database,
+    title: "LLM-Powered Knowledge Management",
+    description: "Our domain-specific LLMs process vast enterprise data, delivering contextual recommendations, predictive analytics, and natural language interaction."
+  }, {
+    icon: LayoutGrid,
+    title: "MCP for Context-Aware AI Models",
+    description: "Model Context Protocol ensures AI models operate with real-time, structured context, improving accuracy and relevance across dynamic enterprise environments."
   }, {
     icon: Shield,
-    title: "Scalability & Security",
-    description: "Safeguard your business or enterprise system with our top-tier security."
+    title: "RAG for Enhanced AI Accuracy",
+    description: "Combine LLMs with RAG-based architectures to fetch real-time, relevant data from structured and unstructured sources, improving AI-generated responses."
   }];
   
   return (
@@ -53,11 +57,11 @@ const Features = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4 transition-colors duration-300">
-            Next-Generation Software Solutions
+            Why Choose Our AI-Driven Solutions?
           </h2>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 staggered-animation">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 staggered-animation">
           {features.map((feature, index) => (
             <motion.div 
               key={index} 

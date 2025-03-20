@@ -1,5 +1,5 @@
 
-import { Code, BrainCircuit, Database, Settings } from 'lucide-react';
+import { Droplet, Stethoscope, LineChart, Factory } from 'lucide-react';
 
 const ServiceCard = ({
   icon: Icon,
@@ -31,21 +31,21 @@ const ServiceCard = ({
 
 const Services = () => {
   const serviceItems = [{
-    icon: Code,
-    title: 'AI-Powered Software Development',
-    description: 'Rapidly deploy quality code with automated codebase creation, bug detection, and optimization.'
+    icon: Droplet,
+    title: 'Oil & Gas AI Solutions',
+    description: 'Break down data silos across well planning, drilling, completion, and production to improve efficiency and reduce downtime.'
   }, {
-    icon: BrainCircuit,
-    title: 'Intelligent Automation & DevOps',
-    description: 'Streamline your production cycle and deployments with AI-based automation.'
+    icon: Stethoscope,
+    title: 'Healthcare AI & Predictive Analytics',
+    description: 'Enable AI-powered clinical decision support, patient monitoring, and medical data retrieval for superior healthcare outcomes.'
   }, {
-    icon: Database,
-    title: 'Data Engineering & Analytics',
-    description: 'Leverage AI for insights, processing data and unlocking the full value of your information.'
+    icon: LineChart,
+    title: 'Finance & Risk Management AI',
+    description: 'Automate fraud detection, risk assessment, and compliance monitoring with AI-driven insights.'
   }, {
-    icon: Settings,
-    title: 'Custom AI Model Development',
-    description: 'Fine-tuned AI models built specifically for your business and industry needs.'
+    icon: Factory,
+    title: 'Manufacturing & Supply Chain AI',
+    description: 'Optimize production workflows, predictive maintenance, and logistics with intelligent automation.'
   }];
   
   return (
@@ -53,12 +53,21 @@ const Services = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
-            Our Services
+            AI-Driven Industry Solutions
           </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
+            Tailored artificial intelligence solutions for your specific industry challenges
+          </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 staggered-animation">
           {serviceItems.map((service, index) => <ServiceCard key={index} icon={service.icon} title={service.title} description={service.description} />)}
+        </div>
+        
+        <div className="mt-12 text-center">
+          <a href="#contact" className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-brand-blue to-brand-lightBlue hover:opacity-90 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+            Get Started with Next-Gen AI Today!
+          </a>
         </div>
       </div>
     </section>
