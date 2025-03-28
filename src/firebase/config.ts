@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD6JL-H1rP2_W-IA7VXqSm0F-UoR0IoRRk",
   authDomain: "agenticnex-website.firebaseapp.com",

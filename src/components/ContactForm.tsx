@@ -1,10 +1,11 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Send, Linkedin, Twitter, Github } from 'lucide-react';
+import { sendEmail, initEmailJS } from '@/services/emailService';
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -16,6 +17,11 @@ const ContactForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   
+  // Initialize EmailJS when the component mounts
+  useEffect(() => {
+    initEmailJS();
+  }, []);
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -26,25 +32,38 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // EmailJS integration would go here
-      // This is a placeholder for the actual EmailJS code
-      console.log("Form submitted with EmailJS:", formData);
+      // Prepare template parameters for EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        from_phone: formData.phone,
+        message: formData.message,
+        to_name: 'AgenticNex Team'
+      };
       
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send email using EmailJS
+      const result = await sendEmail(templateParams);
       
-      toast({
-        title: "Message Sent Successfully!",
-        description: "We've received your message and will get back to you shortly.",
-      });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: ''
-      });
+      if (result.success) {
+        toast({
+          title: "Message Sent Successfully!",
+          description: "We've received your message and will get back to you shortly.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
+      } else {
+        toast({
+          title: "Failed to send message",
+          description: "Please try again later or contact us directly.",
+          variant: "destructive"
+        });
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
       toast({
