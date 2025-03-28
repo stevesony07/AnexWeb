@@ -9,7 +9,15 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const location = useLocation();
+  
+  // Use try/catch to safely handle location
+  let location;
+  try {
+    location = useLocation();
+  } catch (e) {
+    // If used outside Router context, provide a default
+    location = { pathname: '/' };
+  }
 
   useEffect(() => {
     const handleScroll = () => {
