@@ -1,5 +1,5 @@
 
-import { BrainCircuit, Database, LayoutGrid, Shield } from 'lucide-react';
+import { BrainCircuit, Database, Code, Shield, Bot, Network } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const FeatureCard = ({
@@ -8,21 +8,20 @@ const FeatureCard = ({
   description
 }) => {
   return (
-    <div className="relative group overflow-hidden rounded-xl hover-gradient-border">
-      {/* Animated gradient border */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-x"></div>
-      
-      <div className="relative bg-white dark:bg-gray-800 rounded-xl p-8 h-full transition-colors duration-300">
-        <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
-          <Icon className="h-7 w-7 text-brand-blue dark:text-brand-lightBlue" />
+    <div className="relative group overflow-hidden rounded-xl border border-gray-800 bg-gray-900/60 backdrop-blur-sm hover:bg-gray-900/80 transition-all duration-300">      
+      <div className="p-8 h-full">
+        <div className="w-14 h-14 flex items-center justify-center mb-6 rounded bg-blue-900/30 text-blue-400">
+          <Icon className="h-7 w-7" />
         </div>
-        <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3 transition-colors duration-300">
+        <h3 className="text-xl font-semibold text-white mb-3">
           {title}
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
+        <p className="text-gray-400 leading-relaxed">
           {description}
         </p>
       </div>
+      
+      <div className="absolute inset-0 border border-blue-500/0 rounded-xl group-hover:border-blue-500/20 transition-all duration-500 pointer-events-none"></div>
     </div>
   );
 };
@@ -30,25 +29,34 @@ const FeatureCard = ({
 const Features = () => {
   const features = [{
     icon: BrainCircuit,
-    title: "Agentic AI for Autonomous Decision-Making",
-    description: "Leverage AI agents that understand complex workflows, automate processes, and provide intelligent insights with minimal human intervention."
+    title: "Neural Network Architecture",
+    description: "Our proprietary neural networks analyze complex enterprise data to deliver actionable insights with exceptional accuracy and speed."
   }, {
     icon: Database,
-    title: "LLM-Powered Knowledge Management",
-    description: "Our domain-specific LLMs process vast enterprise data, delivering contextual recommendations, predictive analytics, and natural language interaction."
+    title: "LLM-Driven Intelligence",
+    description: "Our large language models provide computational reasoning capabilities for unstructured data processing across diverse enterprise scenarios."
   }, {
-    icon: LayoutGrid,
-    title: "MCP for Context-Aware AI Models",
-    description: "Model Context Protocol ensures AI models operate with real-time, structured context, improving accuracy and relevance across dynamic enterprise environments."
+    icon: Code,
+    title: "Code Generation & Analysis",
+    description: "Advanced AI code generation and analysis that adapts to your existing codebase while maintaining best development practices."
   }, {
     icon: Shield,
-    title: "RAG for Enhanced AI Accuracy",
-    description: "Combine LLMs with RAG-based architectures to fetch real-time, relevant data from structured and unstructured sources, improving AI-generated responses."
+    title: "Enterprise-Grade Security",
+    description: "Military-grade security protocols protect your sensitive data while enabling seamless AI integration across your organization."
+  }, {
+    icon: Bot,
+    title: "Autonomous Agents",
+    description: "Deploy intelligent autonomous agents that handle complex tasks across departments without constant human intervention."
+  }, {
+    icon: Network,
+    title: "Distributed Computing",
+    description: "Our distributed architecture allows for maximum computational efficiency across on-premise and cloud environments."
   }];
   
   return (
-    <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="py-24 md:py-32 relative overflow-hidden" id="services">
+      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-black to-transparent z-10"></div>
+      <div className="container mx-auto px-4 md:px-6 relative z-20">
         <motion.div 
           className="text-center mb-16" 
           initial={{ opacity: 0, y: 20 }} 
@@ -56,12 +64,16 @@ const Features = () => {
           transition={{ duration: 0.6 }} 
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4 transition-colors duration-300">
-            Why Choose Our AI-Driven Solutions?
+          <span className="text-sm font-semibold tracking-wider text-blue-500 uppercase mb-2 block">Core Capabilities</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+            Advanced AI Technologies
           </h2>
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            Leveraging cutting-edge artificial intelligence to drive business transformation and operational excellence
+          </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 staggered-animation">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div 
               key={index} 

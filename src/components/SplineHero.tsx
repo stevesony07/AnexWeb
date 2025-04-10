@@ -12,27 +12,45 @@ const SplineHero = () => {
         </div>
       )}
       
-      {/* Fallback gradient background instead of Spline */}
-      <div className="w-full h-full bg-gradient-to-br from-blue-900/40 via-indigo-900/30 to-purple-900/40 animate-gradient-x"></div>
+      {/* Professional AI-themed visual effect */}
+      <div className="w-full h-full bg-gradient-to-br from-blue-950/30 via-indigo-950/20 to-purple-950/30 animate-gradient-x"></div>
       
-      {/* Animated stars for visual interest */}
-      <div className="absolute inset-0 overflow-hidden opacity-70">
-        {[...Array(100)].map((_, i) => (
+      {/* Digital nodes network effect */}
+      <div className="absolute inset-0 overflow-hidden opacity-80">
+        {[...Array(70)].map((_, i) => (
           <div 
             key={i}
             className="absolute rounded-full bg-white"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-              opacity: Math.random() * 0.8 + 0.2,
-              animation: `pulse ${Math.random() * 3 + 2}s infinite alternate`
+              width: `${Math.random() * 2 + 1}px`,
+              height: `${Math.random() * 2 + 1}px`,
+              opacity: Math.random() * 0.7 + 0.1,
+              animation: `pulse ${Math.random() * 4 + 2}s infinite alternate`,
+              boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)'
+            }}
+          />
+        ))}
+        
+        {/* Digital connection lines */}
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={`line-${i}`}
+            className="absolute bg-gradient-to-r from-blue-500/10 to-indigo-500/10"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 200 + 100}px`,
+              height: '1px',
+              transform: `rotate(${Math.random() * 360}deg)`,
+              opacity: Math.random() * 0.3 + 0.1
             }}
           />
         ))}
       </div>
       
+      {/* Content overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background"></div>
     </div>
   );
