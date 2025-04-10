@@ -9,6 +9,8 @@ import CaseStudies from "@/components/CaseStudies";
 import Insights from "@/components/Insights";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import SplineHero from "@/components/SplineHero";
+import SplineBackground from "@/components/SplineBackground";
 
 const Index = () => {
   // Refs for sections
@@ -58,26 +60,30 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <SplineHero />
+      <SplineBackground />
       <Header />
-      <main className="flex-grow">
-        <Hero />
-        <div className="animate-on-scroll opacity-0" data-animation-type="fade-in">
+      <main className="flex-grow z-10">
+        <div className="pt-24">
+          <Hero />
+        </div>
+        <div className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="fade-in">
           <Features />
         </div>
-        <div ref={servicesRef} className="animate-on-scroll opacity-0" data-animation-type="fade-in-left">
+        <div ref={servicesRef} className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="fade-in-left">
           <Services />
         </div>
-        <div className="animate-on-scroll opacity-0" data-animation-type="fade-in-right">
+        <div className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="fade-in-right">
           <Platform />
         </div>
-        <div ref={aboutRef} className="animate-on-scroll opacity-0" data-animation-type="scale-in">
+        <div ref={aboutRef} className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="scale-in">
           <CaseStudies />
         </div>
-        <div className="animate-on-scroll opacity-0" data-animation-type="fade-in">
+        <div className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="fade-in">
           <Insights />
         </div>
-        <div ref={contactRef} className="animate-on-scroll opacity-0" data-animation-type="fade-in">
+        <div ref={contactRef} className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="fade-in">
           <ContactForm />
         </div>
       </main>

@@ -7,6 +7,7 @@ type ThemeProviderProps = {
   children: React.ReactNode;
   defaultTheme?: Theme;
   storageKey?: string;
+  forcedTheme?: Theme;
 };
 
 type ThemeProviderState = {
@@ -25,6 +26,7 @@ export function ThemeProvider({
   children,
   defaultTheme = "system",
   storageKey = "theme",
+  forcedTheme,
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
@@ -40,8 +42,8 @@ export function ThemeProvider({
     document.body.classList.remove("light-theme", "dark-theme");
 
     // Determine the actual theme (resolving system preference if needed)
-    let actualTheme = theme;
-    if (theme === "system") {
+    let actualTheme = forcedTheme || theme;
+    if (actualTheme === "system") {
       actualTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light";
@@ -54,11 +56,11 @@ export function ThemeProvider({
     
     // Set data attribute for tailwind
     root.setAttribute("data-theme", actualTheme);
-  }, [theme]);
+  }, [theme, forcedTheme]);
 
   // Listen for system theme changes
   useEffect(() => {
-    if (theme === "system") {
+    if (!forcedTheme && theme === "system") {
       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
       
       const handleChange = () => {
@@ -81,13 +83,15 @@ export function ThemeProvider({
       mediaQuery.addEventListener("change", handleChange);
       return () => mediaQuery.removeEventListener("change", handleChange);
     }
-  }, [theme]);
+  }, [theme, forcedTheme]);
 
   const value = {
     theme,
     setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
+      if (!forcedTheme) {
+        localStorage.setItem(storageKey, theme);
+        setTheme(theme);
+      }
     },
   };
 
