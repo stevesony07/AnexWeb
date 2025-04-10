@@ -37,8 +37,8 @@
 
 /* Border gradient animation */
 .animate-gradient-x {
-  animation: gradient-x 3s ease infinite;
-  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+  background-size: 400% 400%;
 }
 
 /* Removed pulse animation for hero-image */
@@ -94,8 +94,8 @@
     transform: scale(1);
   }
   50% {
-    opacity: 0.9;
-    transform: scale(1.02);
+    opacity: 0.6;
+    transform: scale(1.1);
   }
 }
 

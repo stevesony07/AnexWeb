@@ -1,24 +1,8 @@
 
-import { useEffect, useState } from 'react';
-import Spline from '@splinetool/react-spline';
+import { useState } from 'react';
 
 const SplineBackground = () => {
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    // Set a timeout to show loading animation
-    const timer = setTimeout(() => {
-      setLoaded(true);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleError = () => {
-    console.error("Failed to load Spline background scene");
-    setError(true);
-    setLoaded(true); // Stop showing loading indicator
-  };
+  const [loaded, setLoaded] = useState(true);
 
   return (
     <div className="w-full h-screen fixed top-0 left-0 -z-20 overflow-hidden">
@@ -28,15 +12,19 @@ const SplineBackground = () => {
         </div>
       )}
       
-      {!error ? (
-        <Spline 
-          scene="https://prod.spline.design/THfHLKxuxuDqMVHX/scene.splinecode" 
-          className={`w-full h-full ${loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
-          onError={handleError}
-        />
-      ) : (
-        <div className="w-full h-full bg-gradient-to-b from-gray-900 to-black"></div>
-      )}
+      {/* Fallback gradient background with animated effect */}
+      <div className="w-full h-full bg-gradient-to-b from-gray-900 to-black relative">
+        {/* Animated gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 to-purple-900/10 animate-gradient-x"></div>
+        
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-10" 
+             style={{
+               backgroundImage: 'linear-gradient(to right, #666 1px, transparent 1px), linear-gradient(to bottom, #666 1px, transparent 1px)',
+               backgroundSize: '40px 40px'
+             }}>
+        </div>
+      </div>
       
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/70 to-background"></div>
     </div>
