@@ -38,34 +38,38 @@ const Header = () => {
     setMobileMenuOpen(false);
   };
 
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
       isScrolled ? 
-        'bg-black/90 backdrop-blur-md shadow-md border-b border-gray-800/50 py-3' : 
+        'bg-background/90 backdrop-blur-md shadow-md border-b border-gray-800/50 py-3' : 
         'bg-transparent py-5'
     }`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <BrainCircuit className="h-6 w-6 mr-2 text-blue-500" />
-            <span className="text-xl font-bold text-white tracking-tight">AgenticNex</span>
+            <span className="text-xl font-bold text-foreground tracking-tight">AgenticNex</span>
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">
             <nav className="flex items-center space-x-8">
-              <Link to="/" className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors">
+              <Link to="/" className="text-sm font-medium text-foreground/80 hover:text-blue-400 transition-colors">
                 Home
               </Link>
-              <Link to="/platform" className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors">
+              <Link to="/platform" className="text-sm font-medium text-foreground/80 hover:text-blue-400 transition-colors">
                 Platform
               </Link>
-              <button onClick={() => scrollToSection('services')} className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors">
+              <button onClick={() => scrollToSection('services')} className="text-sm font-medium text-foreground/80 hover:text-blue-400 transition-colors">
                 Solutions
               </button>
-              <Link to="/case-studies" className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors">
+              <Link to="/case-studies" className="text-sm font-medium text-foreground/80 hover:text-blue-400 transition-colors">
                 Case Studies
               </Link>
-              <button onClick={() => scrollToSection('about')} className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors">
+              <button onClick={() => scrollToSection('about')} className="text-sm font-medium text-foreground/80 hover:text-blue-400 transition-colors">
                 About
               </button>
             </nav>
@@ -74,8 +78,8 @@ const Header = () => {
               <Button 
                 variant="ghost" 
                 size="icon"
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="text-gray-300 hover:bg-gray-800/50 transition-colors rounded-full w-9 h-9 flex items-center justify-center"
+                onClick={toggleTheme}
+                className="text-foreground/80 hover:bg-foreground/10 transition-colors rounded-full w-9 h-9 flex items-center justify-center"
               >
                 {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
               </Button>
@@ -90,14 +94,14 @@ const Header = () => {
             <Button 
               variant="ghost" 
               size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="text-gray-300 hover:bg-gray-800/50 rounded-full w-9 h-9"
+              onClick={toggleTheme}
+              className="text-foreground/80 hover:bg-foreground/10 rounded-full w-9 h-9"
             >
               {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
             
             <button 
-              className="text-gray-300 hover:text-white"
+              className="text-foreground/80 hover:text-foreground"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <Menu className="h-6 w-6" />
@@ -108,21 +112,21 @@ const Header = () => {
       
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-gray-800/50 animate-fade-in">
+        <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-gray-800/50 animate-fade-in">
           <nav className="flex flex-col py-4 px-6 space-y-4">
-            <Link to="/" className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors py-2">
+            <Link to="/" className="text-sm font-medium text-foreground/80 hover:text-blue-400 transition-colors py-2">
               Home
             </Link>
-            <Link to="/platform" className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors py-2">
+            <Link to="/platform" className="text-sm font-medium text-foreground/80 hover:text-blue-400 transition-colors py-2">
               Platform
             </Link>
-            <button onClick={() => scrollToSection('services')} className="text-sm font-medium text-left text-gray-300 hover:text-blue-400 transition-colors py-2">
+            <button onClick={() => scrollToSection('services')} className="text-sm font-medium text-left text-foreground/80 hover:text-blue-400 transition-colors py-2">
               Solutions
             </button>
-            <Link to="/case-studies" className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors py-2">
+            <Link to="/case-studies" className="text-sm font-medium text-foreground/80 hover:text-blue-400 transition-colors py-2">
               Case Studies
             </Link>
-            <button onClick={() => scrollToSection('about')} className="text-sm font-medium text-left text-gray-300 hover:text-blue-400 transition-colors py-2">
+            <button onClick={() => scrollToSection('about')} className="text-sm font-medium text-left text-foreground/80 hover:text-blue-400 transition-colors py-2">
               About
             </button>
             <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full mt-2">

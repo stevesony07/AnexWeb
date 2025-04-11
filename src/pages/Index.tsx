@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -8,8 +9,6 @@ import CaseStudies from "@/components/CaseStudies";
 import Insights from "@/components/Insights";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import SplineHero from "@/components/SplineHero";
-import SplineBackground from "@/components/SplineBackground";
 import { Helmet } from "react-helmet";
 
 const Index = () => {
@@ -66,7 +65,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col relative">
+    <div className="min-h-screen flex flex-col relative bg-background">
       <Helmet>
         <title>AgenticNex - Next-Gen Agentic AI Solutions</title>
         <meta name="description" content="AgenticNex provides enterprise AI solutions with agentic AI, LLM & RAG technologies for oil & gas, healthcare, finance and manufacturing sectors." />
@@ -74,29 +73,27 @@ const Index = () => {
         <link rel="canonical" href="https://agenticnex.com" />
       </Helmet>
       
-      <SplineHero />
-      <SplineBackground />
       <Header />
-      <main className="flex-grow z-10">
-        <div className="pt-24">
+      <main className="flex-grow">
+        <div>
           <Hero />
         </div>
-        <div ref={featuresRef} className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="fade-in">
+        <div ref={featuresRef} className="animate-on-scroll opacity-0 relative" data-animation-type="fade-in">
           <Features />
         </div>
-        <div ref={servicesRef} className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="fade-in-left">
+        <div ref={servicesRef} className="animate-on-scroll opacity-0 relative" data-animation-type="fade-in-left">
           <Services />
         </div>
-        <div ref={platformRef} className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="fade-in-right">
+        <div ref={platformRef} className="animate-on-scroll opacity-0 relative" data-animation-type="fade-in-right">
           <Platform />
         </div>
-        <div ref={aboutRef} className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="scale-in">
+        <div ref={aboutRef} className="animate-on-scroll opacity-0 relative" data-animation-type="scale-in">
           <CaseStudies />
         </div>
-        <div ref={insightsRef} className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="fade-in">
+        <div ref={insightsRef} className="animate-on-scroll opacity-0 relative" data-animation-type="fade-in">
           <Insights />
         </div>
-        <div ref={contactRef} className="animate-on-scroll opacity-0 z-10 relative" data-animation-type="fade-in">
+        <div ref={contactRef} className="animate-on-scroll opacity-0 relative" data-animation-type="fade-in">
           <ContactForm />
         </div>
       </main>

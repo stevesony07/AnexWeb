@@ -27,11 +27,11 @@ const Hero = () => {
   }, []);
   
   return (
-    <section className="pt-40 pb-20 md:pt-48 md:pb-24 overflow-hidden relative">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="pt-28 pb-20 md:pt-32 md:pb-24 relative">
+      <div className="container mx-auto px-4">
+        <div className="max-w-5xl mx-auto">
           <motion.div 
-            className="space-y-8 backdrop-blur-sm bg-black/20 dark:bg-black/30 p-8 rounded-xl border border-gray-800/50"
+            className="space-y-8 p-6 md:p-8 rounded-xl border border-gray-800/50 bg-black/20 dark:bg-white/5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -47,7 +47,7 @@ const Hero = () => {
             </motion.div>
             
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
@@ -59,7 +59,7 @@ const Hero = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-lg md:text-xl text-gray-300 leading-relaxed"
+              className="text-lg md:text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -81,60 +81,22 @@ const Hero = () => {
                   </span>
                 </Button>
               </Link>
-              <Button variant="outline" className="border-gray-700 hover:bg-gray-800 text-gray-300 px-6 py-6 text-base w-full sm:w-auto">
+              <Button variant="outline" className="border-gray-700 hover:bg-gray-800 dark:hover:bg-gray-800 text-gray-300 dark:text-gray-300 light:text-gray-700 px-6 py-6 text-base w-full sm:w-auto">
                 Schedule a Demo
               </Button>
             </motion.div>
           </motion.div>
-          
-          <motion.div 
-            className="relative hidden lg:block"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            {/* AI visualization placeholder */}
-            <div className="h-[500px] relative overflow-hidden rounded-xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-indigo-900/20 animate-gradient-x rounded-xl"></div>
-              <div className="absolute inset-0 backdrop-blur-sm flex items-center justify-center">
-                <div className="relative w-64 h-64">
-                  {/* Animated circles representing AI nodes */}
-                  {[...Array(5)].map((_, i) => (
-                    <div 
-                      key={i}
-                      className="absolute rounded-full border border-blue-500/70"
-                      style={{
-                        width: `${100 + i * 40}px`,
-                        height: `${100 + i * 40}px`,
-                        left: `${50 - (100 + i * 40) / 2}px`,
-                        top: `${50 - (100 + i * 40) / 2}px`,
-                        borderWidth: '1px',
-                        opacity: 0.7 - i * 0.1,
-                        animation: `pulse ${2 + i * 0.5}s infinite alternate ease-in-out`,
-                        animationDelay: `${i * 0.2}s`
-                      }}
-                    />
-                  ))}
-                  
-                  {/* Central node */}
-                  <div className="absolute w-16 h-16 bg-blue-500/30 backdrop-blur-md rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-                    <div className="w-8 h-8 bg-blue-500/70 rounded-full animate-pulse"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
       
-      {/* Tech indicators */}
-      <div className="absolute bottom-10 left-0 w-full overflow-hidden h-6 opacity-40">
-        <div className="flex space-x-8 animate-[slideLeft_30s_linear_infinite]">
-          {['Neural Networks', 'GPT Models', 'Machine Learning', 'Computer Vision', 'Natural Language Processing', 'Reinforcement Learning', 'Deep Learning', 'Data Analytics'].map((tech, i) => (
-            <div key={i} className="text-xs text-blue-400/70 font-mono whitespace-nowrap">
-              {tech}
-            </div>
-          ))}
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-background to-background/90"></div>
+        <div className="absolute inset-0 opacity-20 dark:opacity-10" 
+          style={{
+            backgroundImage: 'radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2px, transparent 0)',
+            backgroundSize: '50px 50px'
+          }}>
         </div>
       </div>
     </section>

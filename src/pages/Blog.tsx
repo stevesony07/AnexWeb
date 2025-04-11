@@ -1,9 +1,10 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, User, Tag } from 'lucide-react';
 import Footer from "@/components/Footer";
+import { Helmet } from 'react-helmet';
 
 // Mock data for blog posts
 const BLOG_POSTS = [
@@ -71,7 +72,7 @@ const BLOG_POSTS = [
 
 const BlogCard = ({ post }) => {
   return (
-    <div className="overflow-hidden transition-all duration-300 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl dark:shadow-blue-900/5 dark:border dark:border-gray-700 hover:translate-y-[-5px]">
+    <div className="overflow-hidden transition-all duration-300 bg-card rounded-lg shadow-md hover:shadow-xl dark:shadow-blue-900/5 dark:border border-border hover:translate-y-[-5px]">
       <div className="h-48 overflow-hidden">
         <img 
           src={post.image} 
@@ -81,17 +82,17 @@ const BlogCard = ({ post }) => {
       </div>
       <div className="p-6">
         <div className="flex items-center mb-2">
-          <span className="inline-block bg-blue-100 dark:bg-blue-900/30 text-brand-blue dark:text-brand-lightBlue text-xs font-semibold px-2.5 py-0.5 rounded">
+          <span className="inline-block bg-primary/10 text-primary text-xs font-semibold px-2.5 py-0.5 rounded">
             {post.category}
           </span>
         </div>
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
+        <h3 className="text-xl font-bold text-card-foreground mb-2 line-clamp-2">
           {post.title}
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+        <p className="text-muted-foreground mb-4 line-clamp-3">
           {post.excerpt}
         </p>
-        <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
+        <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
           <div className="flex items-center">
             <User className="w-4 h-4 mr-1" />
             <span>{post.author}</span>
@@ -101,8 +102,8 @@ const BlogCard = ({ post }) => {
             <span>{post.readTime}</span>
           </div>
         </div>
-        <div className="pt-4 border-t border-gray-100 dark:border-gray-700">
-          <a href="#" className="inline-flex items-center text-brand-blue dark:text-brand-lightBlue font-medium hover:underline group">
+        <div className="pt-4 border-t border-border">
+          <a href="#" className="inline-flex items-center text-primary font-medium hover:underline group">
             Read full article <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </div>
@@ -118,35 +119,36 @@ const Blog = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col dark:bg-gray-900">
+    <div className="min-h-screen flex flex-col bg-background">
+      <Helmet>
+        <title>Blog - AgenticNex | Next-Gen Agentic AI Solutions</title>
+        <meta name="description" content="Insights, tutorials, and news on AI-driven software development, intelligent automation, and the future of technology" />
+      </Helmet>
       <Header />
       <main className="flex-grow pt-28">
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-gradient-to-br from-blue-200/30 to-purple-300/20 dark:from-blue-900/20 dark:to-purple-800/10 rounded-full blur-3xl -z-10"></div>
-          <div className="absolute bottom-0 left-0 w-1/2 h-1/3 bg-gradient-to-tr from-indigo-200/30 to-cyan-300/20 dark:from-indigo-900/20 dark:to-cyan-800/10 rounded-full blur-3xl -z-10"></div>
-          
+        <section className="py-16 bg-card/50 relative overflow-hidden">          
           <div className="container mx-auto px-4 md:px-6 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-brand-blue to-gray-800 dark:from-white dark:via-brand-lightBlue dark:to-gray-300 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500 mb-4">
               AgenticNex.ai Blog
             </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-lg text-foreground/80 max-w-3xl mx-auto mb-8">
               Insights, tutorials, and news on AI-driven software development, intelligent automation, and the future of technology
             </p>
             <div className="flex flex-wrap justify-center gap-4 max-w-2xl mx-auto">
-              <Button className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700">
+              <Button className="bg-background/80 text-foreground hover:bg-background border border-border">
                 <Tag className="mr-2 h-4 w-4" />
                 Artificial Intelligence
               </Button>
-              <Button className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700">
+              <Button className="bg-background/80 text-foreground hover:bg-background border border-border">
                 <Tag className="mr-2 h-4 w-4" />
                 Machine Learning
               </Button>
-              <Button className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700">
+              <Button className="bg-background/80 text-foreground hover:bg-background border border-border">
                 <Tag className="mr-2 h-4 w-4" />
                 DevOps
               </Button>
-              <Button className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700">
+              <Button className="bg-background/80 text-foreground hover:bg-background border border-border">
                 <Tag className="mr-2 h-4 w-4" />
                 Software Development
               </Button>
@@ -164,7 +166,7 @@ const Blog = () => {
             </div>
             
             <div className="mt-16 text-center">
-              <Button className="bg-brand-blue hover:bg-brand-lightBlue text-white px-8 py-2">
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-2">
                 Load More Articles
               </Button>
             </div>
