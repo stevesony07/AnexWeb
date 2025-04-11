@@ -30,7 +30,12 @@ export function ThemeProvider({
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
+    () => {
+      if (typeof window !== "undefined") {
+        return (localStorage.getItem(storageKey) as Theme) || defaultTheme;
+      }
+      return defaultTheme;
+    }
   );
 
   useEffect(() => {
@@ -60,6 +65,10 @@ export function ThemeProvider({
 
   // Listen for system theme changes
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+    
     if (!forcedTheme && theme === "system") {
       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
       
