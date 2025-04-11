@@ -30,27 +30,27 @@ const Features = () => {
   const features = [{
     icon: BrainCircuit,
     title: "Neural Network Architecture",
-    description: "Our proprietary neural networks analyze complex enterprise data to deliver actionable insights with exceptional accuracy and speed."
+    description: "Our proprietary neural networks analyze complex enterprise data to deliver actionable insights with exceptional accuracy and speed. These networks are optimized for enterprise-grade performance across various industry applications."
   }, {
     icon: Database,
     title: "LLM-Driven Intelligence",
-    description: "Our large language models provide computational reasoning capabilities for unstructured data processing across diverse enterprise scenarios."
+    description: "Our large language models provide computational reasoning capabilities for unstructured data processing across diverse enterprise scenarios. These models enable natural language interactions with your business data and systems."
   }, {
     icon: Code,
     title: "Code Generation & Analysis",
-    description: "Advanced AI code generation and analysis that adapts to your existing codebase while maintaining best development practices."
+    description: "Advanced AI code generation and analysis that adapts to your existing codebase while maintaining best development practices. Our systems can help optimize workflows and identify potential improvements in your code infrastructure."
   }, {
     icon: Shield,
     title: "Enterprise-Grade Security",
-    description: "Military-grade security protocols protect your sensitive data while enabling seamless AI integration across your organization."
+    description: "Military-grade security protocols protect your sensitive data while enabling seamless AI integration across your organization. We implement robust encryption, access controls, and compliance measures to ensure data integrity."
   }, {
     icon: Bot,
     title: "Autonomous Agents",
-    description: "Deploy intelligent autonomous agents that handle complex tasks across departments without constant human intervention."
+    description: "Deploy intelligent autonomous agents that handle complex tasks across departments without constant human intervention. These agents can be customized to your specific business processes and workflows to maximize efficiency."
   }, {
     icon: Network,
     title: "Distributed Computing",
-    description: "Our distributed architecture allows for maximum computational efficiency across on-premise and cloud environments."
+    description: "Our distributed architecture allows for maximum computational efficiency across on-premise and cloud environments. This ensures optimal performance and resource utilization, reducing costs while maintaining processing power."
   }];
   
   return (
@@ -69,7 +69,7 @@ const Features = () => {
             Advanced AI Technologies
           </h2>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Leveraging cutting-edge artificial intelligence to drive business transformation and operational excellence
+            Leveraging cutting-edge artificial intelligence to drive business transformation and operational excellence across industries including oil & gas, healthcare, finance, and manufacturing.
           </p>
         </motion.div>
         
