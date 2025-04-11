@@ -10,7 +10,7 @@ const Hero = () => {
   const { theme } = useTheme();
   const isDarkMode = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
   const [animatedText, setAnimatedText] = useState("");
-  const fullText = "Enterprise AI & LLM Solutions";
+  const fullText = "Next-Gen Agentic AI, LLM & RAG-Based Solutions Provider";
   
   useEffect(() => {
     let currentIndex = 0;
@@ -43,7 +43,7 @@ const Hero = () => {
               transition={{ delay: 0.1, duration: 0.5 }}
             >
               <BrainCircuit className="h-6 w-6 text-blue-400" />
-              <span className="text-sm font-mono text-blue-400 tracking-wider">AGENTIC.AI</span>
+              <span className="text-sm font-mono text-blue-400 tracking-wider">AgenticNex</span>
             </motion.div>
             
             <motion.h1 
@@ -64,7 +64,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Elevate your business with our advanced AI solutions. We transform enterprise intelligence by breaking down data silos, enhancing decision-making, and enabling seamless collaboration across your organization.
+              Transforming Enterprise Intelligence with Cutting-Edge AI. Our AI-driven platforms break down data silos, enhance decision-making, and enable seamless cross-functional collaboration for industries: oil & gas, healthcare, finance, manufacturing.
             </motion.p>
             
             <motion.div 

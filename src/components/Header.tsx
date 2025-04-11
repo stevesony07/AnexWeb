@@ -48,7 +48,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <BrainCircuit className="h-6 w-6 mr-2 text-blue-500" />
-            <span className="text-xl font-bold text-white tracking-tight">AGENTIC.AI</span>
+            <span className="text-xl font-bold text-white tracking-tight">AgenticNex</span>
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">
